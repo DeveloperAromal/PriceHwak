@@ -6,3 +6,11 @@
 .background {
     background-color: #d8d8d8;
 }
+
+.bg-purple {
+    background-color: #8849DC;
+}
+
+.w-100 {
+    width: 450px;
+}
