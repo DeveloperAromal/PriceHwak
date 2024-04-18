@@ -6,17 +6,22 @@ import Chair from "../../public/assets/images/chair.jpg";
 
 const BottomHero = () => {
   return (
-    <>
+     <>
       <hr className="border mt-5 mb-5 border-black" />
       <div className="mt-8 bottom_container px-4 md:px-8 lg:px-4 xl:px-4">
-        <div className="items flex flex-wrap items-center justify-center gap-20">
+        <div className="items flex flex-wrap items-stretch justify-center gap-4 sm:gap-8 md:gap-12 lg:gap-16">
           {/* first item */}
-          <div className=" ">
-            <div className="img-container flex items-center justify-center bg-white w-56 h-56 p-4 mb-1 rounded-xl">
-              <Image src={Crocs} alt="img" width={200} height={200} />
+          <div className="item w-full sm:w-1/2 md:w-1/3 lg:w-1/4 xl:w-1/6">
+            <div className="img-container relative bg-white w-full h-56 p-4 mb-1 rounded-xl overflow-hidden">
+              <Image
+                src="/assets/images/crocs.jpg"
+                alt="img"
+                layout="fill"
+                objectFit="cover"
+              />
             </div>
             <h4 className="title mb-1">
-              <b>Headset amzing super quality tough thing !!!</b>
+              <b>Headset amazing super quality tough thing !!!</b>
             </h4>
             <h4 className="price">
               <b>PRICE:</b> INR{" "}
@@ -26,14 +31,18 @@ const BottomHero = () => {
             </h4>
           </div>
 
-          {/* second item  */}
-
-          <div className=" ">
-            <div className="img-container flex items-center justify-center bg-white w-56 h-56 p-4 mb-1 rounded-xl">
-              <Image src={Chair} alt="img" width={100} height={100} />
+          {/* second item */}
+          <div className="item w-full sm:w-1/2 md:w-1/3 lg:w-1/4 xl:w-1/6">
+            <div className="img-container relative bg-white w-full h-56 p-4 mb-1 rounded-xl overflow-hidden">
+              <Image
+                src="/assets/images/chair.jpg"
+                alt="img"
+                layout="fill"
+                objectFit="cover"
+              />
             </div>
             <h4 className="title mb-1">
-              <b>Headset amzing super quality tough thing</b>
+              <b>Chair amazing super quality tough thing</b>
             </h4>
             <h4 className="price">
               <b>PRICE:</b> INR{" "}
@@ -44,13 +53,17 @@ const BottomHero = () => {
           </div>
 
           {/* third item */}
-
-          <div className="">
-            <div className="img-container flex items-center justify-center bg-white w-56 h-56 p-4 mb-1 rounded-xl">
-              <Image src={Headset} alt="img" width={200} height={200} />
+          <div className="item w-full sm:w-1/2 md:w-1/3 lg:w-1/4 xl:w-1/6">
+            <div className="img-container relative bg-white w-full h-56 p-4 mb-1 rounded-xl overflow-hidden">
+              <Image
+                src="/assets/images/headset.jpg"
+                alt="img"
+                layout="fill"
+                objectFit="cover"
+              />
             </div>
             <h4 className="title mb-1">
-              <b>Headset amzing super quality tough thing</b>
+              <b>Headset amazing super quality tough thing</b>
             </h4>
             <h4 className="price">
               <b>PRICE:</b> INR{" "}
