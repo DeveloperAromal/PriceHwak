@@ -1,8 +1,8 @@
 import React from "react";
 import Image from "next/image";
-import Crocs from "../../public/assets/images/crocs.jpg";
-import Headset from "../../public/assets/images/headset.jpg";
-import Chair from "../../public/assets/images/chair.jpg";
+// import Crocs from "../../public/assets/images/crocs.jpg";
+// import Headset from "../../public/assets/images/headset.jpg";
+// import Chair from "../../public/assets/images/chair.jpg";
 
 const BottomHero = () => {
   return (
@@ -12,7 +12,7 @@ const BottomHero = () => {
         <div className="items flex flex-wrap items-center justify-center gap-20">
           {/* first item */}
           <div className="item w-1/6 h-full ">
-            <div className="img-container flex items-center justify-center bg-white w-full h-3/5 p-4 mb-1 rounded-xl">
+            <div className="img-container flex items-center justify-center bg-white w-56 h-56 p-4 mb-1 rounded-xl">
               <Image src={Crocs} alt="img" width={200} height={200} />
             </div>
             <h4 className="title mb-1">
@@ -29,7 +29,7 @@ const BottomHero = () => {
           {/* second item  */}
 
           <div className="item w-1/6 h-full ">
-            <div className="img-container flex items-center justify-center bg-white w-full h-3/5 p-4 mb-1 rounded-xl">
+            <div className="img-container flex items-center justify-center bg-white w-56 h-56 p-4 mb-1 rounded-xl">
               <Image src={Chair} alt="img" width={100} height={100} />
             </div>
             <h4 className="title mb-1">
@@ -46,7 +46,7 @@ const BottomHero = () => {
           {/* third item */}
 
           <div className="item w-1/6 h-full">
-            <div className="img-container flex items-center justify-center bg-white w-full h-3/5 p-4 mb-1 rounded-xl">
+            <div className="img-container flex items-center justify-center bg-white w-56 h-56 p-4 mb-1 rounded-xl">
               <Image src={Headset} alt="img" width={200} height={200} />
             </div>
             <h4 className="title mb-1">
