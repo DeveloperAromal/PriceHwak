@@ -6,17 +6,18 @@ import Chair from "../../public/assets/images/chair.jpg";
 
 const BottomHero = () => {
   return (
-     <>
+  <>
       <hr className="border mt-5 mb-5 border-black" />
       <div className="mt-8 bottom_container px-4 md:px-8 lg:px-4 xl:px-4">
         <div className="items flex flex-wrap items-stretch justify-center gap-4 sm:gap-8 md:gap-12 lg:gap-16">
           {/* first item */}
           <div className="item w-full sm:w-1/2 md:w-1/3 lg:w-1/4 xl:w-1/6">
-            <div className="img-container relative bg-white w-full h-56 p-4 mb-1 rounded-xl overflow-hidden">
+            <div className="img-container relative flex items-center justify-center bg-white w-full h-56 p-4 mb-1 rounded-xl overflow-hidden">
               <Image
                 src="/assets/images/crocs.jpg"
                 alt="img"
-                className="w-6/12 h-full"
+                layout="fill"
+                objectFit="cover"
               />
             </div>
             <h4 className="title mb-1">
@@ -32,11 +33,12 @@ const BottomHero = () => {
 
           {/* second item */}
           <div className="item w-full sm:w-1/2 md:w-1/3 lg:w-1/4 xl:w-1/6">
-            <div className="img-container relative bg-white w-full h-56 p-4 mb-1 rounded-xl overflow-hidden">
+            <div className="img-container relative flex items-center justify-center bg-white w-full h-56 p-4 mb-1 rounded-xl overflow-hidden">
               <Image
                 src="/assets/images/chair.jpg"
                 alt="img"
-                className="w-6/12 h-full"
+                layout="fill"
+                objectFit="cover"
               />
             </div>
             <h4 className="title mb-1">
@@ -52,11 +54,12 @@ const BottomHero = () => {
 
           {/* third item */}
           <div className="item w-full sm:w-1/2 md:w-1/3 lg:w-1/4 xl:w-1/6">
-            <div className="img-container relative bg-white w-full h-56 p-4 mb-1 rounded-xl overflow-hidden">
+            <div className="img-container relative flex items-center justify-center bg-white w-full h-56 p-4 mb-1 rounded-xl overflow-hidden">
               <Image
                 src="/assets/images/headset.jpg"
                 alt="img"
-                className="w-6/12 h-full"
+                layout="fill"
+                objectFit="cover"
               />
             </div>
             <h4 className="title mb-1">
