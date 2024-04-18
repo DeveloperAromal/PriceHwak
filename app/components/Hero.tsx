@@ -4,6 +4,8 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 import cheerio from "cheerio";
 
+import BottomHero from "./BottomHero";
+
 export default function Hero() {
   const [url, setUrl] = useState<string>("");
   const [data, setData] = useState<string | null>(null);
@@ -74,8 +76,7 @@ export default function Hero() {
               />
               <button
                 type="submit"
-                className="px-8 py-3 bg-purple rounded-lg text-white text-md font-bold"
-              >
+                className="px-8 py-3 bg-purple rounded-lg text-white text-md font-bold">
                 Add
               </button>
             </div>
@@ -85,6 +86,8 @@ export default function Hero() {
         {data && <div className="text-center">{data}</div>}
         {error && <div className="text-center text-red-500">{error}</div>}
       </div>
+
+      <BottomHero />
     </section>
   );
 }
