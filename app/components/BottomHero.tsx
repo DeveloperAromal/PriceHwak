@@ -16,7 +16,7 @@ const BottomHero = () => {
               <Image src={Crocs} alt="img" width={200} height={200} />
             </div>
             <h4 className="title mb-1">
-              <b>Headset amzing super quality tough thing</b>
+              <b>Headset amzing super quality tough thing !!!</b>
             </h4>
             <h4 className="price">
               <b>PRICE:</b> INR{" "}
