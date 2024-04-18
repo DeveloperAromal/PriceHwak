@@ -16,8 +16,6 @@ const BottomHero = () => {
               <Image
                 src="/assets/images/crocs.jpg"
                 alt="img"
-                layout="fill"
-                objectFit="cover"
               />
             </div>
             <h4 className="title mb-1">
@@ -37,8 +35,6 @@ const BottomHero = () => {
               <Image
                 src="/assets/images/chair.jpg"
                 alt="img"
-                layout="fill"
-                objectFit="cover"
               />
             </div>
             <h4 className="title mb-1">
@@ -58,8 +54,6 @@ const BottomHero = () => {
               <Image
                 src="/assets/images/headset.jpg"
                 alt="img"
-                layout="fill"
-                objectFit="cover"
               />
             </div>
             <h4 className="title mb-1">
