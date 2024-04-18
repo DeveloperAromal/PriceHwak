@@ -1,8 +1,8 @@
 import React from "react";
 import Image from "next/image";
-// import Crocs from "../../public/assets/images/crocs.jpg";
-// import Headset from "../../public/assets/images/headset.jpg";
-// import Chair from "../../public/assets/images/chair.jpg";
+import Crocs from "../../public/assets/images/crocs.jpg";
+import Headset from "../../public/assets/images/headset.jpg";
+import Chair from "../../public/assets/images/chair.jpg";
 
 const BottomHero = () => {
   return (
