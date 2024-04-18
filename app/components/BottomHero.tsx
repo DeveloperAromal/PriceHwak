@@ -36,7 +36,7 @@ const BottomHero = () => {
               <Image
                 src="/assets/images/chair.jpg"
                 alt="img"
-                className="w-full h-full"s
+                className="w-full h-full"
               />
             </div>
             <h4 className="title mb-1">
