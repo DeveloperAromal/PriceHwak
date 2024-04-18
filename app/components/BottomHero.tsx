@@ -9,9 +9,9 @@ const BottomHero = () => {
     <>
       <hr className="border mt-5 mb-5 border-black" />
       <div className="mt-8 bottom_container px-4 md:px-8 lg:px-4 xl:px-4">
-        <div className="items flex flex-wrap items-top">
+        <div className="items flex flex-wrap items-center justify-center gap-20">
           {/* first item */}
-          <div className="item w-1/6 h-full p-4">
+          <div className="item w-1/6 h-full ">
             <div className="img-container flex items-center justify-center bg-white w-full h-3/5 p-4 mb-1 rounded-xl">
               <Image src={Crocs} alt="img" width={200} height={200} />
             </div>
@@ -28,7 +28,7 @@ const BottomHero = () => {
 
           {/* second item  */}
 
-          <div className="item w-1/6 h-full p-4">
+          <div className="item w-1/6 h-full ">
             <div className="img-container flex items-center justify-center bg-white w-full h-3/5 p-4 mb-1 rounded-xl">
               <Image src={Chair} alt="img" width={100} height={100} />
             </div>
@@ -45,7 +45,7 @@ const BottomHero = () => {
 
           {/* third item */}
 
-          <div className="item w-1/6 h-full p-4">
+          <div className="item w-1/6 h-full">
             <div className="img-container flex items-center justify-center bg-white w-full h-3/5 p-4 mb-1 rounded-xl">
               <Image src={Headset} alt="img" width={200} height={200} />
             </div>
