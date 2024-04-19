@@ -6,192 +6,108 @@ const pricing: React.FC = () => {
   return (
     <div>
       <style>{`
-        * {
-          margin: 0;
-          padding: 0;
-          box-sizing: border-box;
-          text-decoration: none;
-          list-style-type: none;
-        }
-        .special-button {
-          background: transparent;
-          border: 2px solid #000;
-          color: #fff;
-          padding: 14px 16px;
-          border-radius: 5px;
-          display: block;
-          text-align: center;
-          width: 80%;
-          margin: 0 auto;
-          transition: all 0.5s;
-          font-family: 'Fredoka-Medium';
-          margin-top: 20px;
-          left: 0;
-          bottom: -160px;
-          position: relative;
-        }
-        .special-button:hover {
-          background-color: #1597ee;
-        }
-        .special-button.green {
-          border: 2px solid #ff5c1c;
-        }
-        .special-button.green:hover {
-          background-color: #ff5c1c;
-        }
-        .special-button.violet {
-          border: 2px solid #de0bd7;
-        }
-        .special-button.violet:hover {
-          background-color: #de0bd7;
-        }
-        .wrapper {
-          width: 94%;
-          margin: 0 auto;
-        }
-        .max-width {
-          max-width: 1300px;
-          padding: 0 60px;
-          margin: auto;
-        }
-        body {
-          background: #f5f5f5;
-          color: #f5f5f5;
-        }
-        #blob {
-          background: rgb(195, 195, 195);
-          height: 140px;
-          width: 140px;
-          position: absolute;
-          left: 50%;
-          top: 50%;
-          transform: translate(-50%, -50%);
-          border-radius: 50%;
-          background: linear-gradient(
-            121deg,
-            rgba(48, 127, 212, 1) 16%,
-            rgba(0, 255, 204, 1) 66%
-          );
-          animation: rotate 20s infinite;
-          z-index: -1;
-          transition: all 0.8s linear;
-          box-shadow: 0 0 20px 10px rgba(48, 127, 212, 1);
-        }
-        @keyframes rotate {
-          from {
-            transform: rotate(0deg);
-          }
-          50% {
-            transform: scale(1, 1.5);
-          }
-          to {
-            transform: rotate(360deg);
-          }
-        }
-        #hero {
-          z-index: 1;
-          backdrop-filter: blur(90px);
-          padding: 80px 0px;
-          display: flex;
-          justify-content: center;
-          align-items: center;
-          height: 100vh;
-          transition: all 0.3s;
-        }
-        #hero .content {
-          width: 96%;
-          margin: 0 auto;
-        }
-        #hero ul.main {
-          width: 96%;
-          margin: 0 auto;
-          display: flex;
-          align-items: center;
-          justify-content: space-evenly;
-        }
-        #hero li.main-list {
-          background: rgba(26, 25, 25, 0.2);
-          backdrop-filter: blur(200px);
-          padding: 33px;
-          z-index: 30;
-          border-radius: 5px;
-          transition: all 0.2s linear;
-          position: relative;
-          overflow: hidden;
-        }
-        #hero li.main-list:hover {
-          transform: scale(1.2);
-        }
-        #hero li:last-child {
-          margin-right: 0;
-        }
-        .top_graphics {
-          width: 300px;
-          height: 300px;
-          background: #1597ee;
-          position: absolute;
-          top: 0;
-          right: -37px;
-          margin: 0 auto;
-          border-radius: 50%;
-          z-index: -99;
-          transform: translate(0px, -300px);
-          transition: all 0.8s;
-        }
-        .top_graphics.violet {
-          background: #de0bd7;
-        }
-        .top_graphics.green {
-          background: #ff5c1c;
-        }
-        #hero li.main-list:hover .top_graphics {
-          transform: translate(-8px, -147px);
-        }
-        #hero li.main-list:hover .special-button {
-          position: relative;
-          left: 0;
-          bottom: 0;
-        }
-        #hero li.main-list:hover ul {
-          bottom: 0;
-        }
-        #hero h2 {
-          font-family: 'Fredoka-Medium';
-          font-size: 28px;
-          text-align: center;
-        }
-        #hero span {
-          font-size: 16px;
-          font-family: 'Fredoka-Light';
-          text-align: center;
-          width: 100%;
-          display: block;
-          margin-bottom: 18px;
-        }
-        #hero h3.price {
-          font-size: 30px;
-          font-family: 'Fredoka-Regular';
-          font-weight: 700;
-          margin-bottom: 28px;
-          text-align: center;
-        }
-        #hero ul ul {
-          position: relative;
-          bottom: -55px;
-          transition: all 0.5s;
-        }
-        #hero ul li ul li {
-          font-family: 'Fredoka-Regular';
-          margin-bottom: 5px;
-          display: flex;
-          align-items: center;
-          margin-bottom: 20px;
-        }
-        #hero ul li ul li img {
-          width: 20px;
-          height: 20px;
-          margin-right: 8px;
-        }
+* {
+  @apply box-border no-underline list-none m-0 p-0;
+}
+.special-button {
+  @apply text-white block text-center w-[80] transition-all duration-[0.5s] relative mt-5 mx-auto my-0 px-4 py-3.5 rounded-[5px] border-2 border-solid border-black left-0 -bottom-40 hover:bg-[#1597ee];
+  background: transparent;
+  font-family: "Fredoka-Medium";
+}
+.special-button.green {
+  @apply border-2 border-solid border-[#ff5c1c] hover:bg-[#ff5c1c];
+}
+.special-button.violet {
+  @apply border-2 border-solid border-[#de0bd7] hover:bg-[#de0bd7];
+}
+.wrapper {
+  @apply w-[94] mx-auto my-0;
+}
+.max-width {
+  @apply max-w-[1300px] m-auto px-[60px] py-0;
+}
+body {
+  @apply text-neutral-100;
+  background: #f5f5f5;
+}
+#blob {
+  @apply h-[140px] w-[140px] absolute translate-x-[-50] translate-y-[-50] animate-[rotate_20s_infinite] z-[-1] transition-all duration-[0.8s] ease-linear shadow-[0_0_20px_10px_rgba(48,127,212,1)] rounded-[50] left-[50] top-[50];
+  background: rgb(195, 195, 195);
+  background: linear-gradient(
+    121deg,
+    rgba(48, 127, 212, 1) 16,
+    rgba(0, 255, 204, 1) 66
+  );
+}
+@keyframes rotate {
+  from {
+    @apply rotate-0;
+  }
+  50 {
+    @apply scale-x-100 scale-y-150;
+  }
+  to {
+    @apply rotate-[360deg];
+  }
+}
+#hero {
+  @apply z-[1] backdrop-blur-[90px] flex justify-center items-center h-screen transition-all duration-[0.3s] px-0 py-20;
+}
+#hero .content {
+  @apply w-[96] mx-auto my-0;
+}
+#hero ul.main {
+  @apply w-[96] flex items-center justify-evenly mx-auto my-0;
+}
+#hero li.main-list {
+  @apply backdrop-blur-[200px] z-30 transition-all duration-[0.2s] ease-linear relative overflow-hidden p-[33px] rounded-[5px] hover:scale-[1.2];
+  background: rgba(26, 25, 25, 0.2);
+}
+#hero li:last-child {
+  @apply mr-0;
+}
+.top_graphics {
+  @apply w-[300px] h-[300px] absolute right-[-37px] z-[-99] translate-x-0 translate-y-[-300px] transition-all duration-[0.8s] mx-auto my-0 rounded-[50] top-0;
+  background: #1597ee;
+}
+.top_graphics.violet {
+  background: #de0bd7;
+}
+.top_graphics.green {
+  background: #ff5c1c;
+}
+#hero li.main-list:hover .top_graphics {
+  @apply -translate-x-2 translate-y-[-147px];
+}
+#hero li.main-list:hover .special-button {
+  @apply relative left-0 bottom-0;
+}
+#hero li.main-list:hover ul {
+  @apply bottom-0;
+}
+#hero h2 {
+  @apply text-[28px] text-center;
+  font-family: "Fredoka-Medium";
+}
+#hero span {
+  @apply text-base text-center w-[100] block mb-[18px];
+  font-family: "Fredoka-Light";
+}
+#hero h3.price {
+  @apply text-3xl font-bold text-center mb-7;
+  font-family: "Fredoka-Regular";
+}
+#hero ul ul {
+  @apply relative bottom-[-55px] transition-all duration-[0.5s];
+}
+#hero ul li ul li {
+  @apply flex items-center mb-[5px] mb-5;
+  font-family: "Fredoka-Regular";
+}
+#hero ul li ul li img {
+  @apply w-5 h-5 mr-2;
+}
+
       `}</style>
       
     </div>
