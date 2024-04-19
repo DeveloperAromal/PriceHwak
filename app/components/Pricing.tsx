@@ -196,8 +196,6 @@ const pricing: React.FC = () => {
   );
 };
 
-export default ComponentName;
-
 
 const Component: React.FC = () => {
   useEffect(() => {
