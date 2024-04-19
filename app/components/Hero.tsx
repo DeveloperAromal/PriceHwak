@@ -4,6 +4,8 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 import cheerio from "cheerio";
 
+import BottomHero from "./BottomHero";
+
 export default function Hero() {
   const [url, setUrl] = useState<string>("");
   const [data, setData] = useState<string | null>(null);
@@ -38,7 +40,7 @@ export default function Hero() {
           } else {
             setError(`Error fetching data: ${error.message}`);
           }
-          setData(null); // Reset data state on error
+          setData(null);
         });
     } else {
       setError("Please enter a URL.");
@@ -85,6 +87,7 @@ export default function Hero() {
         {data && <div className="text-center">{data}</div>}
         {error && <div className="text-center text-red-500">{error}</div>}
       </div>
+      <BottomHero />
     </section>
   );
 }
