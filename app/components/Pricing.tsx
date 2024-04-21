@@ -57,17 +57,17 @@ const Pricing = () => {
 
   return (
     <>
-      <section className="py-8 px-16">
+      <section className="py-8">
         <div className="top w-full flex flex-col justify-center items-center mb-16">
           <h4 className="text-2xl">Pricing</h4>
-          <h2 className="text-5xl font-medium">Right Plan for you</h2>
+          <h2 className="text-3xl md:text-4xl ld:text-5xl font-medium">Right Plan for you</h2>
         </div>
 
-        <div className="bottom w-full h-full flex justify-between items-center">
+        <div className="w-full h-full flex flex-wrap justify-center gap-20 items-center">
           {pricingDetails.map((pricing, index) => (
             <div
               key={index}
-              className={`productCard ${pricing.title.toLowerCase()} w-1/4 bg-white rounded-3xl`}>
+              className={`productCard ${pricing.title.toLowerCase()} w-80 bg-white rounded-xl`}>
               <div className="px-4 py-2 title_section border-black border-b">
                 <h3 className="font-medium">{pricing.title}</h3>
               </div>
@@ -108,9 +108,9 @@ const Pricing = () => {
                 ))}
               </div>
 
-              <div className="px-4 py-2 product_choose_btn">
+              <div className="px-4 py-2 flex items-center justify-center product_choose_btn">
                 <Link href="/some-page">
-                  <div className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded inline-block cursor-pointer">
+                  <div className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-2xl inline-block cursor-pointer">
                     Choose Plan
                   </div>
                 </Link>
