@@ -1,55 +1,33 @@
-"use client";
+"use client"
 
-import React, { useState, useEffect } from "react";
-import axios from "axios";
-import cheerio from "cheerio";
+import React, { useState } from 'react';
+import axios from 'axios';
+import Image from 'next/image';
 
-import BottomHero from "./BottomHero";
-
-export default function Hero() {
-  const [url, setUrl] = useState<string>("");
-  const [data, setData] = useState<string | null>(null);
+const YourComponent: React.FC = () => {
+  const [url, setUrl] = useState('');
+  const [data, setData] = useState<{ title: string; price: string | null; image: string | null } | null>(null);
   const [error, setError] = useState<string | null>(null);
 
-  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setUrl(e.target.value);
-    setError(null);
+  const fetchData = async () => {
+    if (url) {
+      try {
+        const response = await axios.post('/api/scrape', { url });
+        setData({ title: response.data.title, price: response.data.price, image: response.data.image });
+        setError(null);
+      } catch (error: any) {
+        setError(`Error fetching data: ${(error.response?.data.message || error.message) as string}`);
+        setData(null);
+      }
+    } else {
+      setError("Please enter a URL.");
+    }
   };
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     fetchData();
   };
-
-  const fetchData = () => {
-    if (url) {
-      axios
-        .get(url)
-        .then((response) => {
-          const html = response.data;
-          const $ = cheerio.load(html);
-          const headingText = $("h1").first().text();
-          setData(headingText);
-          setError(null);
-        })
-        .catch((error) => {
-          if (error.response) {
-            setError(`Error fetching data: ${error.response.statusText}`);
-          } else if (error.request) {
-            setError(`Error fetching data: ${error.message}`);
-          } else {
-            setError(`Error fetching data: ${error.message}`);
-          }
-          setData(null);
-        });
-    } else {
-      setError("Please enter a URL.");
-    }
-  };
-
-  useEffect(() => {
-    fetchData();
-  }, [url]);
 
   return (
     <section>
@@ -70,9 +48,10 @@ export default function Hero() {
             <div className="flex">
               <input
                 type="text"
-                placeholder="Enter a new product url to track..."
+                placeholder="Enter a new product url to track...."
                 className="w-full md:w-96 h-12 rounded-lg pl-2 mr-2 md:mr-0"
-                onChange={handleInputChange}
+                value={url}
+                onChange={(e) => setUrl(e.target.value)}
               />
               <button
                 type="submit"
@@ -83,11 +62,26 @@ export default function Hero() {
             </div>
           </form>
         </div>
-        {/* Display the scraped data */}
-        {data && <div className="text-center">{data}</div>}
-        {error && <div className="text-center text-red-500">{error}</div>}
-      </div>
-      <BottomHero />
+        {error && <p className='text-center text-red-700'>{error}</p>}
+        {data && (
+        <div className='p-4'>
+          <div className='flex flex-col md:flex-row items-center justify-center'>
+            {data.image && 
+              <div className='w-full md:w-40 h-40 md:h-160 flex items-center justify-center mb-4 md:mr-4'>
+                <Image src={data.image} alt="Product" width={150} height={150} />
+              </div>
+            }
+            <div className='text-black text-center'>
+              <p>Title: {data.title}</p>
+              {data.price && <p>Price: {data.price}</p>}
+            </div>
+          </div>
+        </div>
+        
+        )}
+      </div> 
     </section>
   );
-}
+};
+
+export default YourComponent;

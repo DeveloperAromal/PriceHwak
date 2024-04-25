@@ -1,6 +1,7 @@
 import type { Metadata, Viewport } from "next";
 import type { ReactNode } from "react";
 import "./globals.css";
+import { JetBrains_Mono } from "next/font/google";
 
 const APP_NAME = "next-pwa example";
 const APP_DESCRIPTION = "This is an example of using next-pwa";
