@@ -1,22 +1,33 @@
-"use client"
-
-import React, { useState } from 'react';
-import axios from 'axios';
-import Image from 'next/image';
+"use client";
+import React, { useState } from "react";
+import axios from "axios";
+import Image from "next/image";
 
 const YourComponent: React.FC = () => {
-  const [url, setUrl] = useState('');
-  const [data, setData] = useState<{ title: string; price: string | null; image: string | null } | null>(null);
+  const [url, setUrl] = useState("");
+  const [data, setData] = useState<{
+    title: string;
+    price: string | null;
+    image: string | null;
+  } | null>(null);
   const [error, setError] = useState<string | null>(null);
 
   const fetchData = async () => {
     if (url) {
       try {
-        const response = await axios.post('/api/scrape', { url });
-        setData({ title: response.data.title, price: response.data.price, image: response.data.image });
+        const response = await axios.post("/api/scrape", { url });
+        setData({
+          title: response.data.title,
+          price: response.data.price,
+          image: response.data.image,
+        });
         setError(null);
       } catch (error: any) {
-        setError(`Error fetching data: ${(error.response?.data.message || error.message) as string}`);
+        setError(
+          `Error fetching data: ${
+            (error.response?.data.message || error.message) as string
+          }`
+        );
         setData(null);
       }
     } else {
@@ -62,24 +73,39 @@ const YourComponent: React.FC = () => {
             </div>
           </form>
         </div>
-        {error && <p className='text-center text-red-700'>{error}</p>}
+        {error && <p className="text-center text-red-700">{error}</p>}
         {data && (
-        <div className='p-4'>
-          <div className='flex flex-col md:flex-row items-center justify-center'>
-            {data.image && 
-              <div className='w-full md:w-40 h-40 md:h-160 flex items-center justify-center mb-4 md:mr-4'>
-                <Image src={data.image} alt="Product" width={150} height={150} />
+          <div className="pt-4 flex items-center justify-center">
+            <div className="flex flex-col items-center">
+              {data.image && (
+                <div className="flex items-center justify-center">
+                  {" "}
+                  <div className="w-full md:w-40 h-40 md:h-160 mb-4">
+                    <Image
+                      src={data.image}
+                      alt="Product"
+                      width={150}
+                      height={150}
+                    />
+                  </div>
+                </div>
+              )}
+              <div className="text-black text-center">
+                <p>
+                  <span className="font-bold text-teal-700">Details: </span>
+                  {data.title}
+                </p>
+                {data.price && (
+                  <p>
+                    <span className="font-bold text-teal-700">Price: </span>
+                    {data.price}
+                  </p>
+                )}
               </div>
-            }
-            <div className='text-black text-center'>
-              <p>Title: {data.title}</p>
-              {data.price && <p>Price: {data.price}</p>}
             </div>
           </div>
-        </div>
-        
         )}
-      </div> 
+      </div>
     </section>
   );
 };

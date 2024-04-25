@@ -18,16 +18,16 @@ export default async function handler(req, res) {
     await page.goto(url, { waitUntil: 'networkidle0' });
 
     const title = await page.evaluate(() => {
-      const titleElement = document.querySelector('#productTitle');
+      const titleElement = document.querySelector('#productTitle, .VU-ZEz');
       return titleElement ? titleElement.innerText.trim() : null;
     });
     const price = await page.evaluate(() => {
-      const priceElement = document.querySelector('.a-price-whole');
+      const priceElement = document.querySelector('.a-price-whole, .Nx9bqj, .CxhGGd');
       return priceElement ? priceElement.innerText.trim() : null;
     });
 
     const image = await page.evaluate(() => {
-      const imageElement = document.querySelector('.imgTagWrapper img');
+      const imageElement = document.querySelector('.imgTagWrapper img, .DByuf4, .IZexXJ, .jLEJ7H');
       return imageElement ? imageElement.src : null;
     });
 

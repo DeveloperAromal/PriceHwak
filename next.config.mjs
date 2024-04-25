@@ -12,6 +12,12 @@ const nextConfig = {
   experimental: {
     serverComponentsExternalPackages: ['puppeteer-core'],
   },
+  images: {
+    domains: [
+      'm.media-amazon.com',
+      'rukminim2.flixcart.com'
+    ]
+  },
 };
 
 export default withPWA(nextConfig);
