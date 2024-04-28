@@ -27,7 +27,7 @@ export default async function handler(req, res) {
     });
 
     const image = await page.evaluate(() => {
-      const imageElement = document.querySelector('.imgTagWrapper img, .DByuf4, .IZexXJ, .jLEJ7H, .product-gallery--loaded-image');
+      const imageElement = document.querySelector('.imgTagWrapper img, .school-image, .DByuf4, .IZexXJ, .jLEJ7H, .product-gallery--loaded-image');
       return imageElement ? imageElement.src : null;
     });
 

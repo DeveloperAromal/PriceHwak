@@ -16,7 +16,8 @@ const nextConfig = {
     domains: [
       'm.media-amazon.com',
       'rukminim2.flixcart.com',
-      'store.arduino.cc'
+      'store.arduino.cc',
+      'little-flower.vercel.app'
     ]
   },
 };
