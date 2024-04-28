@@ -15,7 +15,8 @@ const nextConfig = {
   images: {
     domains: [
       'm.media-amazon.com',
-      'rukminim2.flixcart.com'
+      'rukminim2.flixcart.com',
+      'store.arduino.cc'
     ]
   },
 };

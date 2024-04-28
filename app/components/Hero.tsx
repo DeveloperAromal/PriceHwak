@@ -1,5 +1,5 @@
 "use client";
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import axios from "axios";
 import Image from "next/image";
 
@@ -11,17 +11,40 @@ const YourComponent: React.FC = () => {
     image: string | null;
   } | null>(null);
   const [error, setError] = useState<string | null>(null);
+  const [addedProducts, setAddedProducts] = useState<
+    Array<{
+      title: string;
+      price: string | null;
+      image: string | null;
+    }>
+  >([]);
+
+  // Retrieve added products from local storage when component mounts
+  useEffect(() => {
+    const storedProducts = localStorage.getItem("addedProducts");
+    if (storedProducts) {
+      setAddedProducts(JSON.parse(storedProducts));
+    }
+  }, []);
+
+  // Update local storage whenever addedProducts changes
+  useEffect(() => {
+    localStorage.setItem("addedProducts", JSON.stringify(addedProducts));
+  }, [addedProducts]);
 
   const fetchData = async () => {
     if (url) {
       try {
         const response = await axios.post("/api/scrape", { url });
-        setData({
+        const newData = {
           title: response.data.title,
           price: response.data.price,
           image: response.data.image,
-        });
+        };
+        setData(newData);
         setError(null);
+        // Update addedProducts with new data
+        setAddedProducts([...addedProducts, newData]);
       } catch (error: any) {
         setError(
           `Error fetching data: ${
@@ -60,7 +83,7 @@ const YourComponent: React.FC = () => {
               <input
                 type="text"
                 placeholder="Enter a new product url to track...."
-                className="w-full md:w-96 h-12 rounded-lg pl-2 mr-2 md:mr-0"
+                className="w-full md:w-96 h-12 rounded-lg pl-2 mr-2 md:mr-0 text-neutral-900"
                 value={url}
                 onChange={(e) => setUrl(e.target.value)}
               />
@@ -74,37 +97,38 @@ const YourComponent: React.FC = () => {
           </form>
         </div>
         {error && <p className="text-center text-red-700">{error}</p>}
-        {data && (
-          <div className="pt-4 flex items-center justify-center">
-            <div className="flex flex-col items-center">
-              {data.image && (
-                <div className="flex items-center justify-center">
-                  {" "}
-                  <div className="w-full md:w-40 h-40 md:h-160 mb-4">
-                    <Image
-                      src={data.image}
-                      alt="Product"
-                      width={150}
-                      height={150}
-                    />
+        <hr className="shad" />
+        <div className="flex gap-10 pt-10">
+          {addedProducts.map((data, index) => (
+            <div key={index} className="flex  py-2">
+              <div>
+                {data.image && (
+                  <div className="flex items-center justify-center">
+                    <div className="w-64 h-64">
+                      <Image
+                        src={data.image}
+                        alt="Product"
+                        width={150}
+                        height={150}
+                        className="w-full h-full rounded-md shad"
+                      />
+                    </div>
                   </div>
-                </div>
-              )}
-              <div className="text-black text-center">
-                <p>
-                  <span className="font-bold text-teal-700">Details: </span>
-                  {data.title}
-                </p>
-                {data.price && (
-                  <p>
-                    <span className="font-bold text-teal-700">Price: </span>
-                    {data.price}
-                  </p>
                 )}
+                <div className="text-black text-center pt-4">
+                  <p className="text-cust text-justify max-w-72 text-neutral-300">
+                    {data.title}
+                  </p>
+                  {data.price && (
+                    <p className="text-lg font-bold text-neutral-300">
+                      <span className="text-teal-500">Price:</span> {data.price}
+                    </p>
+                  )}
+                </div>
               </div>
             </div>
-          </div>
-        )}
+          ))}
+        </div>
       </div>
     </section>
   );
