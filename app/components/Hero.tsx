@@ -1,4 +1,5 @@
 "use client";
+// pages/index.js
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import Image from "next/image";
@@ -58,7 +59,7 @@ const YourComponent: React.FC = () => {
     }
   };
 
-  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     fetchData();
   };
@@ -98,7 +99,7 @@ const YourComponent: React.FC = () => {
         </div>
         {error && <p className="text-center text-red-700">{error}</p>}
         <hr className="shad" />
-        <div className="flex gap-10 pt-10">
+        <div className="flex flex-wrap gap-10 pt-10">
           {addedProducts.map((data, index) => (
             <div key={index} className="flex  py-2">
               <div>

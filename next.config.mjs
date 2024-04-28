@@ -17,7 +17,7 @@ const nextConfig = {
       'm.media-amazon.com',
       'rukminim2.flixcart.com',
       'store.arduino.cc',
-      'little-flower.vercel.app'
+      'little-flower.vercel.app',
     ]
   },
 };
