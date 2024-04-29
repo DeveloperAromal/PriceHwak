@@ -1,13 +1,15 @@
-"use client";
+"use client"
 
 import "@fontsource/dancing-script";
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import axios from "axios";
 import Image from "next/image";
 import Link from "next/link";
+import { ScaleLoader } from "react-spinners";
 
 const YourComponent: React.FC = () => {
   const [url, setUrl] = useState("");
+  const [loading, setLoading] = useState(false); 
   const [data, setData] = useState<{
     title: string;
     price: string | null;
@@ -22,21 +24,9 @@ const YourComponent: React.FC = () => {
     }>
   >([]);
 
-  // Retrieve added products from local storage when component mounts
-  useEffect(() => {
-    const storedProducts = localStorage.getItem("addedProducts");
-    if (storedProducts) {
-      setAddedProducts(JSON.parse(storedProducts));
-    }
-  }, []);
-
-  // Update local storage whenever addedProducts changes
-  useEffect(() => {
-    localStorage.setItem("addedProducts", JSON.stringify(addedProducts));
-  }, [addedProducts]);
-
   const fetchData = async () => {
     if (url) {
+      setLoading(true); // Start loading indicator when fetching data
       try {
         const response = await axios.post("/api/scrape", { url });
         const newData = {
@@ -46,7 +36,6 @@ const YourComponent: React.FC = () => {
         };
         setData(newData);
         setError(null);
-        // Update addedProducts with new data
         setAddedProducts([...addedProducts, newData]);
       } catch (error: any) {
         setError(
@@ -55,6 +44,8 @@ const YourComponent: React.FC = () => {
           }`
         );
         setData(null);
+      } finally {
+        setLoading(false); // Stop loading indicator when data fetching is complete
       }
     } else {
       setError("Please enter a URL.");
@@ -131,6 +122,11 @@ const YourComponent: React.FC = () => {
             </div>
           </form>
         </div>
+        {loading && ( // Show loading indicator when loading is true
+          <div className="flex justify-center py-4">
+            <ScaleLoader	 color="#ffffff" />
+          </div>
+        )}
         {error && <p className="text-center text-red-700">{error}</p>}
         <hr className="shad" />
         <div className="flex flex-wrap gap-10 pt-10">
