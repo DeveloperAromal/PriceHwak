@@ -128,7 +128,7 @@ const YourComponent: React.FC = () => {
         </div>
         {loading && ( // Show loading indicator when loading is true
           <div className="flex justify-center py-4">
-            <ScaleLoader	 color="#ffffff" />
+            <ScaleLoader	 color="cyan" />
           </div>
         )}
         {error && <p className="text-center text-red-700">{error}</p>}

@@ -26,7 +26,7 @@ export default async function handler(req, res) {
         await page.goto(url);
         console.log('Navigated! Scraping page content...');
         const title = await page.evaluate(() => {
-          const titleElement = document.querySelector('#productTitle, .VU-ZEz, .product-title');
+          const titleElement = document.querySelector('#productTitle, .VU-ZEz, .product-title, .a-size-large, .product-title-word-break');
           return titleElement ? titleElement.innerText.trim() : null;
         });
         const price = await page.evaluate(() => {
@@ -34,7 +34,7 @@ export default async function handler(req, res) {
           return priceElement ? priceElement.innerText.trim() : null;
         });
         const image = await page.evaluate(() => {
-          const imageElement = document.querySelector('.imgTagWrapper img, .school-image, .DByuf4, .IZexXJ, .jLEJ7H, .product-gallery--loaded-image');
+          const imageElement = document.querySelector('.imgTagWrapper img, .a-dynamic-image, .a-stretch-horizontal, .school-image, .DByuf4, .IZexXJ, .jLEJ7H, .product-gallery--loaded-image');
           return imageElement ? imageElement.src : null;
         });
         await browser.close();
