@@ -120,14 +120,13 @@ const YourComponent: React.FC = () => {
                 value={url}
                 onChange={(e) => setUrl(e.target.value)}
               />
-
               <div>
-              <button
-                type="submit"
-                className="px-8 py-3 bg-white rounded-tr-md rounded-br-md text-black text-md font-bold"
-              >
-                Add
-              </button>
+                <button
+                  type="submit"
+                  className="px-8 py-3 bg-white rounded-tr-md rounded-br-md text-black text-md font-bold"
+                >
+                  Add
+                </button>
               </div>
             </div>
           </form>
