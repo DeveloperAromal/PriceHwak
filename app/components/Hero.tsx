@@ -1,8 +1,10 @@
 "use client";
-// pages/index.js
+
+import "@fontsource/dancing-script";
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import Image from "next/image";
+import Link from "next/link";
 
 const YourComponent: React.FC = () => {
   const [url, setUrl] = useState("");
@@ -68,15 +70,45 @@ const YourComponent: React.FC = () => {
     <section>
       <div className="px-4 md:px-8 lg:px-4 xl:px-4">
         <div className="flex items-end justify-end pt-2">
-          <div className="w-14 h-14 bg-cyan-500 rounded-full flex items-center justify-center">
-            <h1 className="font-extralight text-2xl text-white">A</h1>
+          <div className="w-14 h-14 rounded-full flex items-center justify-center">
+            <h1 className="absolute right-2 flex gap-2">
+              <Link href="#">
+                <Image
+                  src="/icons/bell.png"
+                  alt="bell"
+                  width={30}
+                  height={30}
+                />
+              </Link>
+              <Link href="#">
+                <Image
+                  src="/icons/settings.png"
+                  alt="settings"
+                  width={30}
+                  height={30}
+                />
+              </Link>
+              <Link href="#">
+                <Image
+                  src="/icons/account.png"
+                  alt="account"
+                  width={30}
+                  height={30}
+                />
+              </Link>
+            </h1>
           </div>
         </div>
         <div>
-          <h1 className="text-center font-bold text-3xl md:text-5xl lg:text-6xl pt-10">
-            Paste & See the Magic 🪄
+          <h1 className="text-center font-bold text-4xl md:text-5xl lg:text-6xl pt-10">
+            Paste the link
           </h1>
-          <p className="text-center text-xl pt-4">Track products, save money</p>
+          <p
+            className="text-center text-2xl md:text-3xl lg:text-5xl pt-4"
+            style={{ fontFamily: "Dancing Script" }}
+          >
+            and see the magic
+          </p>
         </div>
         <div className="flex items-center justify-center py-10">
           <form className="w-full md:w-auto" onSubmit={handleSubmit}>
@@ -84,16 +116,19 @@ const YourComponent: React.FC = () => {
               <input
                 type="text"
                 placeholder="Enter a new product url to track...."
-                className="w-full md:w-96 h-12 rounded-lg pl-2 mr-2 md:mr-0 text-neutral-900"
+                className="w-full md:w-96 h-12 rounded-tl-md rounded-bl-md pl-2 border-2 text-neutral-300 bg-transparent border-white"
                 value={url}
                 onChange={(e) => setUrl(e.target.value)}
               />
+
+              <div>
               <button
                 type="submit"
-                className="px-8 py-3 bg-purple rounded-lg text-white text-md font-bold"
+                className="px-8 py-3 bg-white rounded-tr-md rounded-br-md text-black text-md font-bold"
               >
                 Add
               </button>
+              </div>
             </div>
           </form>
         </div>
