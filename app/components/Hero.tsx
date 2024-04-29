@@ -1,15 +1,18 @@
 "use client"
 
 import "@fontsource/dancing-script";
+// Import necessary libraries
 import React, { useState } from "react";
 import axios from "axios";
 import Image from "next/image";
 import Link from "next/link";
 import { ScaleLoader } from "react-spinners";
 
+// Define the component
 const YourComponent: React.FC = () => {
+  // Define state variables
   const [url, setUrl] = useState("");
-  const [loading, setLoading] = useState(false); 
+  const [loading, setLoading] = useState(false);
   const [data, setData] = useState<{
     title: string;
     price: string | null;
@@ -24,11 +27,12 @@ const YourComponent: React.FC = () => {
     }>
   >([]);
 
+  // Function to fetch data from the server
   const fetchData = async () => {
     if (url) {
-      setLoading(true); // Start loading indicator when fetching data
+      setLoading(true); // Start loading indicator
       try {
-        const response = await axios.post("/api/scrape", { url });
+        const response = await axios.post("/api/scrape", { url }); // Send a POST request to the server-side endpoint
         const newData = {
           title: response.data.title,
           price: response.data.price,
@@ -52,11 +56,11 @@ const YourComponent: React.FC = () => {
     }
   };
 
+  // Function to handle form submission
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
-    fetchData();
+    e.preventDefault(); // Prevent default form submission behavior
+    fetchData(); // Call the fetchData function to fetch data from the server
   };
-
   return (
     <section>
       <div className="px-4 md:px-8 lg:px-4 xl:px-4">
@@ -73,7 +77,7 @@ const YourComponent: React.FC = () => {
               </Link>
               <Link href="#">
                 <Image
-                  src="/icons/settings.png"
+                  src="/ico1ns/settings.png"
                   alt="settings"
                   width={30}
                   height={30}

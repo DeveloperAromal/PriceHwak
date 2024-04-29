@@ -1,7 +1,6 @@
 // pages/api/scrape.js
 const puppeteer = require('puppeteer-core');
 
-// Bright Data Scraping Browser WebSocket Endpoint
 const SBR_WS_ENDPOINT = 'wss://brd-customer-hl_723f7de9-zone-pricehwak:y9oy41j60wbm@brd.superproxy.io:9222';
 
 export default async function handler(req, res) {
