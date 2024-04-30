@@ -1,13 +1,13 @@
-import SignUpForm from "../../components/auth/signup/SignUp_Form";
+import LoginForm from "../../../components/auth/login/LoginForm";
 
-export default function SignUp() {
+export default function Login() {
   return (
     <section>
       <div className="flex">
         <div className="flex-grow">
           <div className=" flex items-center justify-center w-full h-screen background">
             <div>
-              <SignUpForm />
+              <LoginForm />
             </div>
           </div>
         </div>

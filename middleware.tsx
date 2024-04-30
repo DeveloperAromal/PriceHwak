@@ -16,9 +16,9 @@ export async function middleware(req: NextRequest) {
     console.log(session);
     const path = req.nextUrl.pathname;
 
-    const loginPath = "/auth/login";
+    const loginPath = "/auth/v1/login";
 
-    if (!session && path === "/dashboard/dash/dashboard") {
+    if (!session && path === "dashboard/dash/v0") {
       console.log("redirecting to login");
       return NextResponse.redirect(new URL(loginPath, req.url));
     }

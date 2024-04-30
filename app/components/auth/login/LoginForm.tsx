@@ -15,7 +15,7 @@ export default function LoginForm() {
   useEffect(() => {
     const hasLoggedIn = localStorage.getItem("hasLoggedIn");
     if (hasLoggedIn) {
-      router.push("/dashboard/dash/dashboard");
+      router.push("dashboard/dash/v0");
     }
   }, [router]);
 
@@ -28,18 +28,11 @@ export default function LoginForm() {
     if (data?.user) {
       toast.success("Logged in successfully");
       localStorage.setItem("hasLoggedIn", "true");
-      router.push("/dashboard/dash/dashboard");
+      router.push("dashboard/dash/v0");
     } else {
       toast.error("Email or Password does not match");
     }
   };
-
-  // const handleLogout = async () => {
-  //   await supabase.auth.signOut();
-  //   localStorage.removeItem("hasLoggedIn");
-  //   router.push("/auth/login");
-  // };
-
   return (
     <section>
       <div>
@@ -93,7 +86,7 @@ export default function LoginForm() {
             <div className="flex items-center justify-center">
               <p>
                 Don't have an account?{" "}
-                <Link href="/auth/signup">
+                <Link href="/auth/v1/signup">
                   <span className="text-blue-500">SignUp</span>
                 </Link>
               </p>

@@ -23,7 +23,7 @@ export default function SignUpForm() {
     if (data?.user) {
       localStorage.setItem("user_name", name);
       toast.success("Account created successfully");
-      router.push("/auth/login");
+      router.push("/auth/v1/login");
     } else {
       toast.error("An error occurred while creating your account");
     }
@@ -85,7 +85,7 @@ export default function SignUpForm() {
               <div className="flex items-center justify-center">
                 <p>
                   Already have an account?{" "}
-                  <Link href="/auth/login">
+                  <Link href="/auth/v1/login">
                     <span className="text-blue-500">Login</span>
                   </Link>
                 </p>

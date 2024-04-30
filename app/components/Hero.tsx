@@ -1,16 +1,38 @@
 "use client"
-
-import "@fontsource/dancing-script";
-// Import necessary libraries
+import { createClientComponentClient } from "@supabase/auth-helpers-nextjs";
+import { useRouter } from "next/navigation";
+import { toast } from "react-toastify";
 import React, { useState } from "react";
 import axios from "axios";
 import Image from "next/image";
 import Link from "next/link";
 import { ScaleLoader } from "react-spinners";
 
-// Define the component
-const YourComponent: React.FC = () => {
-  // Define state variables
+const supabase = createClientComponentClient();
+
+const Account = () => {
+  const router = useRouter(); 
+
+  const handleLogout = async () => {
+    await supabase.auth.signOut();
+    localStorage.removeItem("hasLoggedIn");
+    router.push("/auth/v1/login");
+    toast.success('SignOut succesfully')
+  };
+
+  return (
+    <div className="w-40 h-14 bg-white rounded-md absolute right-2 z-20">
+      <div>
+        <button className="flex gap-2 px-4 py-3" onClick={handleLogout}>
+          <Image src="/icons/signout.png" alt="signout" width={30} height={30} />
+          <h3 className="text-black text-xl">SignOut</h3>
+        </button>
+      </div>
+    </div>
+  );
+};
+
+const Dashboard: React.FC = () => {
   const [url, setUrl] = useState("");
   const [loading, setLoading] = useState(false);
   const [data, setData] = useState<{
@@ -26,13 +48,17 @@ const YourComponent: React.FC = () => {
       image: string | null;
     }>
   >([]);
+  const [showSignOut, setShowSignOut] = useState(false);
 
-  // Function to fetch data from the server
+  const toggleSignOut = () => {
+    setShowSignOut(!showSignOut);
+  };
+
   const fetchData = async () => {
     if (url) {
-      setLoading(true); // Start loading indicator
+      setLoading(true); 
       try {
-        const response = await axios.post("/api/scrape", { url }); // Send a POST request to the server-side endpoint
+        const response = await axios.post("/api/scrape", { url }); 
         const newData = {
           title: response.data.title,
           price: response.data.price,
@@ -49,18 +75,18 @@ const YourComponent: React.FC = () => {
         );
         setData(null);
       } finally {
-        setLoading(false); // Stop loading indicator when data fetching is complete
+        setLoading(false); 
       }
     } else {
       setError("Please enter a URL.");
     }
   };
 
-  // Function to handle form submission
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault(); // Prevent default form submission behavior
-    fetchData(); // Call the fetchData function to fetch data from the server
+    e.preventDefault(); 
+    fetchData();
   };
+
   return (
     <section>
       <div className="px-4 md:px-8 lg:px-4 xl:px-4">
@@ -77,20 +103,24 @@ const YourComponent: React.FC = () => {
               </Link>
               <Link href="#">
                 <Image
-                  src="/ico1ns/settings.png"
+                  src="/icons/settings.png"
                   alt="settings"
                   width={30}
                   height={30}
                 />
               </Link>
-              <Link href="#">
-                <Image
-                  src="/icons/account.png"
-                  alt="account"
-                  width={30}
-                  height={30}
-                />
-              </Link>
+              <div>
+                {showSignOut && <Account />}
+                {!showSignOut && (
+                  <Image
+                    src="/icons/account.png"
+                    alt="account"
+                    width={30}
+                    height={30}
+                    onClick={toggleSignOut}
+                  />
+                )}
+              </div>
             </h1>
           </div>
         </div>
@@ -128,7 +158,7 @@ const YourComponent: React.FC = () => {
         </div>
         {loading && ( // Show loading indicator when loading is true
           <div className="flex justify-center py-4">
-            <ScaleLoader	 color="cyan" />
+            <ScaleLoader color="cyan" />
           </div>
         )}
         {error && <p className="text-center text-red-700">{error}</p>}
@@ -156,7 +186,8 @@ const YourComponent: React.FC = () => {
                   </p>
                   {data.price && (
                     <p className="text-lg font-bold text-neutral-300">
-                      <span className="text-teal-500">Price:</span> {data.price}
+                      <span className="text-teal-500">Price:</span>{" "}
+                      {data.price}
                     </p>
                   )}
                 </div>
@@ -169,4 +200,4 @@ const YourComponent: React.FC = () => {
   );
 };
 
-export default YourComponent;
+export default Dashboard;
