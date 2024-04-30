@@ -15,7 +15,7 @@ export default function LoginForm() {
   useEffect(() => {
     const hasLoggedIn = localStorage.getItem("hasLoggedIn");
     if (hasLoggedIn) {
-      router.push("dashboard/dash/v0");
+      router.push("/dashboard/dash/v0");
     }
   }, [router]);
 
@@ -28,7 +28,7 @@ export default function LoginForm() {
     if (data?.user) {
       toast.success("Logged in successfully");
       localStorage.setItem("hasLoggedIn", "true");
-      router.push("dashboard/dash/v0");
+      router.push("/dashboard/dash/v0");
     } else {
       toast.error("Email or Password does not match");
     }
