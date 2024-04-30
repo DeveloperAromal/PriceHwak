@@ -78,7 +78,7 @@ export default function LoginForm() {
             </div>
             <div className="flex items-center justify-center py-10">
               <button
-                className="py-2 px-24 rounded-xl text-black bg-white font-bold"
+                className="py-2 px-24 rounded-xl text-black bg-white font-bold hover:bg-slate-300"
                 onClick={handleLogin}
               >
                 Login
