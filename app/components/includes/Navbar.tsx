@@ -36,7 +36,7 @@ export default function Navbar() {
   return (
     <section className="pb-20">
       <div>
-        <nav className="backdrop-blur-md h-20 w-full fixed top-0 left-0 right-0 lg:flex lg:justify-between lg:items-center lg:px-20">
+        <nav className="backdrop-blur-sm h-20 w-full fixed top-0 left-0 right-0 lg:flex lg:justify-between lg:items-center lg:px-20">
           <div className="flex justify-between items-center">
             <Link href="/home">
               <div className="cursor-pointer ">
