@@ -2,7 +2,7 @@ import type { Metadata, Viewport } from "next";
 import type { ReactNode } from "react";
 import "./globals.css";
 
-const APP_NAME = "PriceHwak";
+const APP_NAME = "PriceHawk";
 const APP_DESCRIPTION = "Your money's important so dont waste it";
 
 export const metadata: Metadata = {
