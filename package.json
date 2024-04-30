@@ -16,6 +16,7 @@
     "@supabase/supabase-js": "^2.42.4",
     "axios": "^1.6.8",
     "cheerio": "^1.0.0-rc.12",
+    "framer-motion": "^4.1.17",
     "fs": "^0.0.1-security",
     "next": "^14.1.4",
     "puppeteer": "^22.7.0",
