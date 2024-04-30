@@ -18,7 +18,7 @@ export default function Hero(){
                     and you can plan perfectly on when to buy these</p>
                     <Button href="/auth/v1/signup" title="Try a demo" />
                 </div>
-                <div className="flex items-center justify-center pt-44">
+                <div className="flex items-center justify-center pt-20">
                     <Image
                       src="/assets/images/github.png"
                       alt="github" 
