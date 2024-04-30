@@ -6,7 +6,7 @@ import "@fontsource/dancing-script";
 
 export default function Hero(){
     return(
-        <section>
+        <section className="px-8">
             <div className="top">
                 <Navbar/>
             </div>
