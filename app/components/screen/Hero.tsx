@@ -24,7 +24,7 @@ export default function Hero(){
                       alt="github" 
                       width={1300}
                       height={25}
-                      className=""
+                      className="w-full h-full"
                       />
                 </div>
             </section>
