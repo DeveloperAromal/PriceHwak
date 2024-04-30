@@ -18,13 +18,13 @@ export default function Hero(){
                     and you can plan perfectly on when to buy these</p>
                     <Button href="/auth/v1/signup" title="Try a demo" />
                 </div>
-                <div className="flex box-shad items-center justify-center pt-44">
+                <div className="flex items-center justify-center pt-44">
                     <Image
                       src="/assets/images/github.png"
                       alt="github" 
                       width={1300}
                       height={25}
-                      className="w-full h-full"
+                      className="w-full h-full box-shad"
                       />
                 </div>
             </section>
