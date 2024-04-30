@@ -36,7 +36,7 @@ export default function LoginForm() {
   return (
     <section>
       <div>
-        <div className="w-80 h-100 bg-white rounded-2xl flex justify-center">
+        <div className="w-80 h-100 border box-shad bg-black border-teal-500 rounded-md  flex justify-center">
           <div>
             <div>
               <h1 className="text-center font-bold text-3xl py-10">

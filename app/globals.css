@@ -28,3 +28,6 @@
 .text-cust{
     font-size: 16px;
 }
+.box-shad{
+    box-shadow: 0px 0px 30px #0adb8b;
+}
