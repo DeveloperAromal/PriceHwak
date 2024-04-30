@@ -1,20 +1,19 @@
-import Link from 'next/link'
+import Link from 'next/link';
 
 type ButtonProps = {
     title: string;
-    href:string;
+    href: string;
+    className?: string; // Making className optional
 };
 
-
-const Button = ({title,href}:ButtonProps) => {
-  return (
-
-    <Link href={href} className='py-3 px-5 rounded-xl text-black bg-white font-bold'>
-        <button>
+const Button = ({ title, href, className }: ButtonProps) => {
+    return (
+        <Link href={href}>
+            <button className={className ? className : 'py-3 px-8 rounded-xl text-black bg-white font-bold'}>
                 {title}
-        </button>
-    </Link>
-  )
-}
+            </button>
+        </Link>
+    );
+};
 
-export default Button
+export default Button;

@@ -3,7 +3,7 @@
 import Link from "next/link";
 import Image from "next/image";
 import { useState, useEffect } from "react";
-
+import Button from "../includes/Button";
 interface Nav {
   href: string;
   children: string;
@@ -66,17 +66,17 @@ export default function Navbar() {
                 >
                   <div className="relative">
                     <div
-                      className={`w-8 h-0.5 bg-black mb-2 transition-all duration-300 ${
+                      className={`w-8 h-0.5 bg-white mb-2 transition-all duration-300 ${
                         isMenuOpen ? "rotate-45 translate-y-4" : ""
                       }`}
                     ></div>
                     <div
-                      className={`w-8 h-0.5 bg-black mb-2 transition-all duration-300 ${
+                      className={`w-8 h-0.5 bg-white mb-2 transition-all duration-300 ${
                         isMenuOpen ? "opacity-0 translate-x-full" : ""
                       }`}
                     ></div>
                     <div
-                      className={`w-8 h-0.5 bg-black transition-all duration-300 ${
+                      className={`w-8 h-0.5 bg-white transition-all duration-300 ${
                         isMenuOpen ? "-rotate-45 -translate-y-1" : ""
                       }`}
                     ></div>
@@ -86,35 +86,35 @@ export default function Navbar() {
             </div>
           </div>
           <div className="hidden lg:block">
+            <div className="flex items-center justify-center">
             <ul
               className={`${
                 isMenuOpen ? "block" : "hidden"
               } lg:flex lg:items-center lg:justify-center lg:gap-10`}
             >
-              <div className="flex gap-10 pt-20 pl-96">
-                <NavItem href="/home">Home</NavItem>
-                <NavItem href="/about">About Us</NavItem>
-                <NavItem href="/blog">Blog</NavItem>
-                <NavItem href="/gallery">Gallery</NavItem>
-                <NavItem href="/contact">Contact</NavItem>
-                <div className="pl-20 flex gap-10">
-                  <div className=" ">
-                    <Link href="/auth/signup">
-                      <button className="text-2xl ">Sign up</button>
-                    </Link>
+                <div className="flex gap-10 items-center justify-center">
+                  <NavItem href="/home">Home</NavItem>
+                  <NavItem href="/about">About</NavItem>
+                  <NavItem href="/blog">Pricing</NavItem>
+                  <NavItem href="/gallery">Service</NavItem>
+                  <NavItem href="/contact">Contact</NavItem>
+                </div>
+                <div className="pl-44  flex relative top-3">
+                  <div>
+                    <Button
+                      href="/auth//v1/login"
+                      title="LOGIN"
+                      className="bg-transparent py-3 px-5 font-bold text-xl"
+                    />
                   </div>
-                  <div className="">
-                    <Link href="/auth/login">
-                      <button className="bg-purple-700 py-2 rounded-3xl px-10 hover:bg-purple-900">
-                        Login
-                      </button>
-                    </Link>
+                  <div>
+                    <Button href="/auth/v1/signup" title="SIGN UP" />
                   </div>
                 </div>
-              </div>
             </ul>
           </div>
           <div>
+            </div>
             <ul
               className={`${
                 isMenuOpen ? "block" : "hidden"
@@ -124,9 +124,9 @@ export default function Navbar() {
                 <div className="flex items-center justify-center pb-2">
                   <div>
                     <NavItem href="/home">Home</NavItem>
-                    <NavItem href="/about">About Us</NavItem>
-                    <NavItem href="/blog">Blog</NavItem>
-                    <NavItem href="/gallery">Gallery</NavItem>
+                    <NavItem href="/about">About</NavItem>
+                    <NavItem href="/blog">Pricing</NavItem>
+                    <NavItem href="/gallery">Service</NavItem>
                     <NavItem href="/contact">Contact</NavItem>
                   </div>
                 </div>
@@ -157,7 +157,7 @@ export default function Navbar() {
 
 function NavItem({ href, children }: Nav) {
   return (
-    <li className="text-xl md:text-2xl text-black hover:text-emerald-600 cursor-pointer md:mb-20">
+    <li className="text-xl md:text-2xl text-white hover:text-emerald-600 cursor-pointer relative top-2">
       <Link href={href}>{children}</Link>
     </li>
   );
