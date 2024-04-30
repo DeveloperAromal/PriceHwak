@@ -1,9 +1,7 @@
-export default function Das(){
+import Dashboard from "../../../components/dashboard/dashboard";
+
+export default function Dash(){
     return(
-        <section>
-            <div>
-                hi this is dashboard
-            </div>
-        </section>
+        <Dashboard/>
     );
 }
