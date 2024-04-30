@@ -9,7 +9,7 @@ type ButtonProps = {
 const Button = ({ title, href, className }: ButtonProps) => {
     return (
         <Link href={href}>
-            <button className={className ? className : 'py-3 px-8 rounded-xl text-black bg-white font-bold'}>
+            <button className={className ? className : 'py-3 px-6 rounded-xl text-black bg-white font-bold'}>
                 {title}
             </button>
         </Link>

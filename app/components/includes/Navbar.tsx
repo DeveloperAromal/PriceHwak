@@ -3,7 +3,8 @@
 import Link from "next/link";
 import Image from "next/image";
 import { useState, useEffect } from "react";
-import Button from "../includes/Button";
+import Button from "./Button";
+
 interface Nav {
   href: string;
   children: string;
@@ -35,7 +36,7 @@ export default function Navbar() {
   return (
     <section className="pb-20">
       <div>
-        <nav className="bg-darkblue h-20 w-full fixed top-0 left-0 right-0 lg:flex lg:justify-between lg:items-center lg:px-20">
+        <nav className="backdrop-sm h-20 w-full fixed top-0 left-0 right-0 lg:flex lg:justify-between lg:items-center lg:px-20">
           <div className="flex justify-between items-center">
             <Link href="/home">
               <div className="cursor-pointer ">
@@ -55,7 +56,7 @@ export default function Navbar() {
                   height={90}
                   className="block lg:hidden pl-5"
                 /> */}
-                <h1>Logo.</h1>
+                <h1 className="text-2xl font-bold relative top-4">LOGO.</h1>
               </div>
             </Link>
             <div className="block lg:hidden">
@@ -86,20 +87,19 @@ export default function Navbar() {
             </div>
           </div>
           <div className="hidden lg:block">
-            <div className="flex items-center justify-center">
             <ul
               className={`${
                 isMenuOpen ? "block" : "hidden"
               } lg:flex lg:items-center lg:justify-center lg:gap-10`}
             >
-                <div className="flex gap-10 items-center justify-center">
-                  <NavItem href="/home">Home</NavItem>
-                  <NavItem href="/about">About</NavItem>
-                  <NavItem href="/blog">Pricing</NavItem>
-                  <NavItem href="/gallery">Service</NavItem>
-                  <NavItem href="/contact">Contact</NavItem>
-                </div>
-                <div className="pl-44  flex relative top-3">
+              <div className="flex gap-10 pt-10">
+                <NavItem href="/home">Home</NavItem>
+                <NavItem href="/about">About</NavItem>
+                <NavItem href="/blog">Pricing</NavItem>
+                <NavItem href="/blog">Service</NavItem>
+                <NavItem href="/contact">Contact</NavItem>
+                <div className="absolute right-8 top-9">
+                  <div className="flex">
                   <div>
                     <Button
                       href="/auth//v1/login"
@@ -110,23 +110,24 @@ export default function Navbar() {
                   <div>
                     <Button href="/auth/v1/signup" title="SIGN UP" />
                   </div>
+                  </div>
                 </div>
+              </div>
             </ul>
           </div>
           <div>
-            </div>
             <ul
               className={`${
                 isMenuOpen ? "block" : "hidden"
-              } bg-darkblue nav-top w-full h-screen flex items-center justify-center`}
+              } bg-black nav-top w-full h-screen flex items-center justify-center`}
             >
               <div className=" block lg:hidden">
                 <div className="flex items-center justify-center pb-2">
                   <div>
                     <NavItem href="/home">Home</NavItem>
-                    <NavItem href="/about">About</NavItem>
-                    <NavItem href="/blog">Pricing</NavItem>
-                    <NavItem href="/gallery">Service</NavItem>
+                    <NavItem href="/about">About Us</NavItem>
+                    <NavItem href="/blog">Blog</NavItem>
+                    <NavItem href="/gallery">Gallery</NavItem>
                     <NavItem href="/contact">Contact</NavItem>
                   </div>
                 </div>
@@ -157,7 +158,7 @@ export default function Navbar() {
 
 function NavItem({ href, children }: Nav) {
   return (
-    <li className="text-xl md:text-2xl text-white hover:text-emerald-600 cursor-pointer relative top-2">
+    <li className="text-xl md:text-2xl text-white hover:text-emerald-600 cursor-pointer">
       <Link href={href}>{children}</Link>
     </li>
   );
