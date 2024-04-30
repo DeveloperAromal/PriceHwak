@@ -12,16 +12,16 @@ export default function Hero() {
         <Navbar />
       </div>
       <section className="top relative">
-        <div className="w-10 md:w-40 h-10 md:h-40 absolute top-0 md:right-1/4 rounded-full bg-cyan-600 blur">
+        <div className="w-20 md:w-40 h-20 md:h-40 absolute top-0 md:right-1/4 rounded-full bg-cyan-600 blur">
           .
         </div>
-        <div className="w-10 md:w-40 h-10 md:h-40 absolute top-0 md:right-1/4 bg-emerald-6900 blur">
+        <div className="w-20 md:w-40 h-20 md:h-40 absolute top-0 md:right-1/4 bg-emerald-6900 blur">
           .
         </div>
-        <div className="w-10 md:w-40 h-10 md:h-40 absolute top-0 md:left-1/4 rounded-full bg-teal-400 blur">
+        <div className="w-20 md:w-40 h-20 md:h-40 absolute top-0 md:left-1/4 rounded-full bg-teal-400 blur">
           .
         </div>
-        <div className="w-10 md:w-40 h-10 md:h-40 absolute top-0 md:left-1/4 bg-teal-900 blur">
+        <div className="w-20 md:w-40 h-20 md:h-40 absolute top-0 md:left-1/4 bg-teal-900 blur">
           .
         </div>
         <div className="top text-center pt-6 pb-5">
