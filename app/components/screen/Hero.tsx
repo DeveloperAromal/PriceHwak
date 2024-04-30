@@ -11,7 +11,19 @@ export default function Hero() {
       <div className="top">
         <Navbar />
       </div>
-      <section className="top">
+      <section className="top relative">
+        <div className="w-10 md:w-40 h-10 md:h-40 absolute top-0 md:right-1/4 rounded-full bg-cyan-600 blur">
+          .
+        </div>
+        <div className="w-10 md:w-40 h-10 md:h-40 absolute top-0 md:right-1/4 bg-emerald-6900 blur">
+          .
+        </div>
+        <div className="w-10 md:w-40 h-10 md:h-40 absolute top-0 md:left-1/4 rounded-full bg-teal-400 blur">
+          .
+        </div>
+        <div className="w-10 md:w-40 h-10 md:h-40 absolute top-0 md:left-1/4 bg-teal-900 blur">
+          .
+        </div>
         <div className="top text-center pt-6 pb-5">
           <motion.h1
             initial={{ opacity: 0, y: -50 }}
@@ -46,7 +58,7 @@ export default function Hero() {
             initial={{ opacity: 0, scale: 0 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 1, delay: 1.1 }}
-            className="w-full h-full box-shad"
+            className="max-w-full box-shad-teal"
           >
             <Image
               src="/assets/images/github.png"
