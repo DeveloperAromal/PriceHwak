@@ -5,11 +5,16 @@ import { useRouter } from "next/navigation";
 import React, { useState } from "react";
 import { toast } from "react-toastify";
 import Link from "next/link";
+import Image from "next/image";
+import eyeOpen from "../../../../public/icons/eye_open.png";
+import eyeClosed from "../../../../public/icons/eye_closed.png";
+
 
 export default function SignUpForm() {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [showPassword, setShowPassword] = useState(false);
   const supabase = createClientComponentClient();
   const router = useRouter();
 
@@ -65,8 +70,9 @@ export default function SignUpForm() {
                   Password
                 </label>
                 <br />
+                <div className="relative">
                 <input
-                  type="password"
+                  type={showPassword ? "text" : "password"} 
                   name="password"
                   value={password}
                   id="password"
@@ -76,6 +82,15 @@ export default function SignUpForm() {
                   placeholder="Enter your password"
                   className="text-black px-3 w-64 xl:w-64 h-10 rounded-md border border-gray-600 focus:outline-none focus:ring-2 focus:ring-gray-600"
                 />
+                <Image
+                  src={showPassword ? eyeOpen : eyeClosed}
+                  alt="Toggle Password Visibility"
+                  className="absolute right-2 top-2 cursor-pointer"
+                  width={20}
+                  height={20}
+                  onClick={() => setShowPassword(!showPassword)}
+                />
+                </div>
               </div>
               <div className="flex items-center justify-center py-10">
                 <button

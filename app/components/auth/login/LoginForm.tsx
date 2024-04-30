@@ -1,15 +1,17 @@
-"use client";
-
+"use client"
 import { createClientComponentClient } from "@supabase/auth-helpers-nextjs";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import React, { useState, useEffect } from "react";
 import { toast } from "react-toastify";
-import Button from "../../includes/Button";
+import Image from "next/image";
+import eyeOpen from "../../../../public/icons/eye_open.png";
+import eyeClosed from "../../../../public/icons/eye_closed.png";
 
 export default function LoginForm() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [showPassword, setShowPassword] = useState(false); // State to toggle password visibility
   const supabase = createClientComponentClient();
   const router = useRouter();
 
@@ -34,6 +36,7 @@ export default function LoginForm() {
       toast.error("Email or Password does not match");
     }
   };
+
   return (
     <section>
       <div>
@@ -68,16 +71,26 @@ export default function LoginForm() {
                 Password
               </label>
               <br />
-              <input
-                type="password"
-                name="password"
-                value={password}
-                id="password"
-                maxLength={8}
-                onChange={(e) => setPassword(e.target.value)}
-                placeholder="Enter your password"
-                className="text-black px-3 w-64 xl:w-64 h-10 rounded-md border border-gray-600 focus:outline-none focus:ring-2 focus:ring-gray-600"
-              />
+              <div className="relative">
+                <input
+                  type={showPassword ? "text" : "password"} // Toggle between text and password type
+                  name="password"
+                  value={password}
+                  id="password"
+                  maxLength={8}
+                  onChange={(e) => setPassword(e.target.value)}
+                  placeholder="Enter your password"
+                  className="text-black px-3 w-64 xl:w-64 h-10 rounded-md border border-gray-600 focus:outline-none focus:ring-2 focus:ring-gray-600"
+                />
+                <Image
+                  src={showPassword ? eyeOpen : eyeClosed}
+                  alt="Toggle Password Visibility"
+                  className="absolute right-2 top-2 cursor-pointer"
+                  width={20}
+                  height={20}
+                  onClick={() => setShowPassword(!showPassword)}
+                />
+              </div>
             </div>
             <div className="flex items-center justify-center py-10">
               <button
