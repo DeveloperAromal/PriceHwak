@@ -76,7 +76,7 @@ export default function SignUpForm() {
               </div>
               <div className="flex items-center justify-center py-10">
                 <button
-                  className="px-20 py-2 bg-gradient-to-r from-blue-500 via-purple-500 to-cyan-500 text-white rounded-2xl"
+                  className="py-2 px-24 rounded-xl text-black bg-white font-bold"
                   onClick={handleSignUp}
                 >
                   SignUp
