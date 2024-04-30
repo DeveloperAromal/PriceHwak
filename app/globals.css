@@ -31,3 +31,6 @@
 .box-shad{
     box-shadow: 0px 0px 30px #0adb8b;
 }
+.blur{
+    filter: blur(80px);
+}
