@@ -1,4 +1,6 @@
 "use client"
+
+import "@fontsource/dancing-script";
 import { createClientComponentClient } from "@supabase/auth-helpers-nextjs";
 import { useRouter } from "next/navigation";
 import { toast } from "react-toastify";
