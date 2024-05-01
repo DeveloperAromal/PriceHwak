@@ -60,24 +60,28 @@ const Pricing = () => {
   };
 
   return (
-    <section className="flex justify-center items-center min-h-screen w-full">
+    <section className="flex justify-center items-center min-h-screen w-full pt-20">
+      <div>
       <div className="flex flex-wrap justify-center gap-4">
         <div className="w-40 h-40 absolute top-0 md:right-2/4 rounded-full bg-pink-800 blur">.</div>
         {pricingData.map((pricing, index) => (
           <PricingCard key={index} {...pricing} useClient={useClient} />
         ))}
+        
       </div>
-      <div className="absolute bottom-2">
+      <div className="flex items-center justify-center">
         <div className="flex">
-          <h3 className="pt-12 text-2xl">Monthly Billing</h3>
+          <h3 className="pt-12 lg:text-2xl md:text-2xl sm:text-2xl text-xl">Monthly Billing</h3>
           <div>
-            <div onClick={toggleClient} className={classNames("flex w-20 h-10 py-1 px-1 bg-green-500 m-10 cursor-pointer", { "bg-green-600": useClient })}>
+            <div onClick={toggleClient} className={classNames("flex w-20 h-10 py-1 px-1 bg-gray-500 m-10 cursor-pointer", { "bg-green-600": useClient })}>
               <span className={classNames("h-8 w-8 bg-white", { "ml-10": useClient })}></span>
             </div>
           </div>
-          <h3 className="pt-12 text-2xl">Yearly Billing</h3><span className="text-gray-500 text-xl pt-12"> /save 20%</span>
+          <h3 className="pt-12 lg:text-2xl md:text-2xl sm:text-2xl text-xl">Yearly Billing</h3><span className="text-gray-500 text-xl pt-12"> /save 20%</span>
         </div>
       </div>
+      </div>
+      
     </section>
   );
 };
