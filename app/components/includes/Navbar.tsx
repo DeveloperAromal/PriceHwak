@@ -42,15 +42,15 @@ export default function Navbar() {
               <div className="cursor-pointer ">
                 <div className="">
                   <Image
-                    src="/assets/PriceHwak_transparent.png"
+                    src="/assets/logo.png"
                     alt="logo"
-                    width={100}
-                    height={100}
+                    width={78}
+                    height={78}
                     className="hidden lg:block pt-4"
                   />
                 </div>
                 <Image
-                  src="/assets/PriceHwak_transparent.png"
+                  src="/assets/logo.png"
                   alt="logo"
                   width={90}
                   height={90}
