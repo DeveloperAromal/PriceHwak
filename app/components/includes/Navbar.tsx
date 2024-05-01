@@ -36,27 +36,26 @@ export default function Navbar() {
   return (
     <section className="pb-20">
       <div>
-        <nav className="backdrop-blur-sm h-20 w-full fixed top-0 left-0 right-0 lg:flex lg:justify-between lg:items-center lg:px-20">
-          <div className="flex justify-between items-center px-4">
+        <nav className="backdrop-blur-sm h-20 w-full fixed top-0 left-0 right-0 lg:flex lg:justify-between lg:items-center">
+          <div className="flex justify-between items-center">
             <Link href="/home">
               <div className="cursor-pointer ">
                 <div className="">
-                  {/* <Image
-                    src="/icons/logo.png"
+                  <Image
+                    src="/assets/PriceHwak_transparent.png"
                     alt="logo"
-                    width={70}
-                    height={70}
-                    className="hidden lg:block"
-                  /> */}
+                    width={100}
+                    height={100}
+                    className="hidden lg:block pt-4"
+                  />
                 </div>
-                {/* <Image
-                  src="/icons/logo.png"
+                <Image
+                  src="/assets/PriceHwak_transparent.png"
                   alt="logo"
                   width={90}
                   height={90}
                   className="block lg:hidden pl-5"
-                /> */}
-                <h1 className="text-2xl font-bold relative top-4">LOGO.</h1>
+                />
               </div>
             </Link>
             <div className="block lg:hidden">
@@ -92,7 +91,7 @@ export default function Navbar() {
                 isMenuOpen ? "block" : "hidden"
               } lg:flex lg:items-center lg:justify-center lg:gap-10`}
             >
-              <div className="flex gap-10 pt-10">
+              <div className="flex gap-10 pr-36 pt-10">
                 <NavItem href="/home">Home</NavItem>
                 <NavItem href="/about">About</NavItem>
                 <NavItem href="/blog">Pricing</NavItem>
@@ -115,13 +114,13 @@ export default function Navbar() {
               </div>
             </ul>
           </div>
-          <div>
+          <div className=" bg-black z-20">
             <ul
               className={`${
                 isMenuOpen ? "block" : "hidden"
-              } bg-black nav-top w-full h-screen flex items-center justify-center`}
+              } bg-black w-full h-screen flex items-center justify-center`}
             >
-              <div className=" block lg:hidden">
+              <div className=" block lg:hidden bg-black z-20">
                 <div className="flex items-center justify-center pb-2">
                   <div>
                     <NavItem href="/home">Home</NavItem>
