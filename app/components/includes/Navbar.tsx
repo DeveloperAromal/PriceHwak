@@ -34,9 +34,9 @@ export default function Navbar() {
   }, [isMenuOpen]);
 
   return (
-    <section className="pb-20">
+    <section className="pb-4">
       <div>
-        <nav className="backdrop-blur-sm h-20 w-full fixed top-0 left-0 right-0 lg:flex lg:justify-between lg:items-center">
+        <nav className="backdrop-blur-sm h-20 w-full top-0 left-0 right-0 lg:flex lg:justify-between lg:items-center">
           <div className="flex justify-between items-center">
             <Link href="/home">
               <div className="cursor-pointer ">
@@ -103,7 +103,7 @@ export default function Navbar() {
                     <Button
                       href="/auth//v1/login"
                       title="LOGIN"
-                      className="bg-transparent py-3 px-5 font-bold text-xl"
+                      className="bg-transparent py-3 px-5 text-lg"
                     />
                   </div>
                   <div>
@@ -157,7 +157,7 @@ export default function Navbar() {
 
 function NavItem({ href, children }: Nav) {
   return (
-    <li className="text-xl md:text-2xl text-white hover:text-emerald-600 cursor-pointer">
+    <li className="text-lg md:text-lg text-white hover:text-emerald-600 cursor-pointer">
       <Link href={href}>{children}</Link>
     </li>
   );
