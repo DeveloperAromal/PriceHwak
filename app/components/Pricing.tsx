@@ -45,11 +45,11 @@ const Pricing = () => {
 ];
   return (
     <>
-      <section className='p-8 border-2 border-red-500 w-screen h-screen flex flex-col items-center'>
+      <section className='p-8 w-screen h-screen flex flex-col items-center overflow-x-hidden'>
         <div className="top mb-4">
           <h4>Best Option 👇🏻</h4>
         </div>
-        <div className="bottom flex items-center justify-evenly w-full">
+        <div className="bottom flex items-center justify-evenly w-full mb-8">
         {pricingCards.map((card, index) => (
                 <div key={index} className="card_one border-2 border-69 bg-70 w-1/5 flex flex-col items-center py-4 px-4">
                     <div className="main flex flex-col items-center justify-center mb-8">
@@ -72,6 +72,16 @@ const Pricing = () => {
                     </div>
                 </div>
             ))}
+        </div>
+
+        <div className="changer_button flex items-center">
+          <h4 className='mr-4'>Monthly Billing</h4>
+            <div className="greenbox w-14 h-7 bg-green-600 flex items-center p-1 mr-4">
+              <div className="whitebox bg-white w-5 h-5">
+
+              </div>
+            </div>
+          <h4>Yearly Billing <span className='text-sm text-69'>/save 20%</span></h4>
         </div>
       </section>
     </>
