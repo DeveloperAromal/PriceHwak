@@ -29,10 +29,11 @@ export default function Hero() {
             initial={{ opacity: 0, y: -50 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 1, delay: 0.5 }}
-            className="mt-5 text-3xl lg:text-7xl md:text-6xl sm:text-5xl"
+            className="mt-5 text-2xl xs:text-2xl sm:text-5xl md:text-6xl lg:text-7xl"
           >
             Your Money's Important
           </motion.h1>
+
           <motion.h3
             initial={{ opacity: 0, y: -50 }}
             animate={{ opacity: 1, y: 0 }}
@@ -60,7 +61,7 @@ export default function Hero() {
             <Button href="/auth/v1/signup" title="Try a demo" />
           </motion.div>
         </div>
-        <div className="flex items-center justify-center pt-20 ">
+        <div className="flex w-full items-center justify-center pt-20 ">
           <motion.div
             initial={{ opacity: 0, scale: 0 }}
             animate={{ opacity: 1, scale: 1 }}
@@ -71,8 +72,8 @@ export default function Hero() {
               src="/assets/images/github.png"
               alt="github"
               width={1300}
-              height={25}
-              className="rounded-2xl"
+              height={1000}
+              className="rounded-2xl w-full h-full"
             />
           </motion.div>
         </div>

@@ -32,3 +32,8 @@
 .box-shad-teal{
     box-shadow: 0px 0px 20px #00d889;
 }
+@media (min-width: 350px) {
+    .xs\:text-2xl {
+       font-size: 30px;
+    }
+}
