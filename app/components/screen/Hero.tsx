@@ -11,7 +11,7 @@ export default function Hero() {
       <div className="top">
         <Navbar />
       </div>
-      <section className="top relative py-20 sm:py-10 md:py-10 lg:py-10">
+      <section className="top relative py-40 sm:py-10 md:py-10 lg:py-10">
         <div className="w-20 md:w-40 h-20 md:h-40 absolute top-0 md:right-1/4 rounded-full bg-cyan-600 blur">
           .
         </div>
@@ -24,7 +24,17 @@ export default function Hero() {
         <div className="w-20 md:w-40 h-20 md:h-40 absolute top-0 md:left-1/4 bg-teal-900 blur">
           .
         </div>
+        <div className="w-20 md:w-40 h-20 md:h-40 absolute bottom-0 md:left-1/4 rounded-full bg-red-700 blur">
+          .
+          <div className="w-20 md:w-40 h-20 md:h-40 absolute bottom-0 md:right-1/4 bg-emerald-900 blur">
+          .
+        </div>
+        </div>
+        <div className="w-20 md:w-40 h-20 md:h-40 absolute bottom-0 md:right-1/4 bg-purple-900 blur">
+          .
+        </div>
         <div className="top text-center pt-6 pb-5">
+          <div>
           <motion.h1
             initial={{ opacity: 0, y: -50 }}
             animate={{ opacity: 1, y: 0 }}
@@ -60,8 +70,10 @@ export default function Hero() {
           >
             <Button href="/auth/v1/signup" title="Try a demo" />
           </motion.div>
+          </div>
         </div>
-        <div className="flex w-full items-center justify-center pt-20 ">
+        <div className="sm:block lg:block xs:block hidden">
+        <div className="flex w-full items-center justify-center pt-20">
           <motion.div
             initial={{ opacity: 0, scale: 0 }}
             animate={{ opacity: 1, scale: 1 }}
@@ -76,6 +88,7 @@ export default function Hero() {
               className="rounded-2xl w-full h-full"
             />
           </motion.div>
+        </div>
         </div>
       </section>
     </section>
