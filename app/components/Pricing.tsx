@@ -76,7 +76,7 @@ const Pricing = () => {
 
         <div className="changer_button flex items-center">
           <h4 className='mr-4'>Monthly Billing</h4>
-            <div className="greenbox w-14 h-7 bg-green-600 flex items-center p-1 mr-4">
+            <div className="greenbox w-14 h-7 bg-green-600 flex items-center justify-end p-1 mr-4">
               <div className="whitebox bg-white w-5 h-5">
 
               </div>
