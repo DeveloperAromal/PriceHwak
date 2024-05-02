@@ -11,7 +11,7 @@ export default function Hero() {
       <div className="top">
         <Navbar />
       </div>
-      <section className="top relative py-40 sm:py-10 md:py-10 lg:py-36">
+      <section className="top relative py-40 sm:py-10 md:py-10 lg:py-20">
         <div className="w-20 md:w-40 h-20 md:h-40 absolute top-20 md:right-1/4 rounded-full bg-cyan-700 blur">
           .
         </div>

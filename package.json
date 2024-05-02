@@ -28,7 +28,8 @@
     "react-spinner": "^0.2.7",
     "react-spinners": "^0.13.8",
     "react-toastify": "^10.0.5",
-    "selenium-webdriver": "^4.20.0"
+    "selenium-webdriver": "^4.20.0",
+    "stripe": "^15.4.0"
   },
   "devDependencies": {
     "@types/node": "20.12.4",

@@ -1,10 +1,9 @@
 "use client"
-
 import "@fontsource/dancing-script";
 import { createClientComponentClient } from "@supabase/auth-helpers-nextjs";
 import { useRouter } from "next/navigation";
 import { toast } from "react-toastify";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import axios from "axios";
 import Image from "next/image";
 import Link from "next/link";
@@ -51,6 +50,21 @@ const Dashboard: React.FC = () => {
     }>
   >([]);
   const [showSignOut, setShowSignOut] = useState(false);
+  const [email, setEmail] = useState<string | null>(null);
+
+  useEffect(() => {
+    const subscription = supabase.auth.onAuthStateChange((event, session) => {
+      if (event === "SIGNED_IN" && session?.user) {
+        setEmail(session.user?.email || null);
+      } else {
+        setEmail(null);
+      }
+    });
+
+    return () => {
+      subscription.data.subscription.unsubscribe();
+    };
+  }, []);
 
   const toggleSignOut = () => {
     setShowSignOut(!showSignOut);
@@ -58,14 +72,26 @@ const Dashboard: React.FC = () => {
 
   const fetchData = async () => {
     if (url) {
-      setLoading(true); 
+      setLoading(true);
       try {
-        const response = await axios.post("/api/scrape", { url }); 
+        const response = await axios.post("/api/scrape", { url });
+
         const newData = {
           title: response.data.title,
           price: response.data.price,
           image: response.data.image,
+          url: url,
+          email: email,
         };
+
+        const { data: insertedData, error } = await supabase
+          .from("Pricehawk_Database")
+          .insert([newData]);
+
+        if (error) {
+          throw error;
+        }
+
         setData(newData);
         setError(null);
         setAddedProducts([...addedProducts, newData]);
@@ -77,7 +103,7 @@ const Dashboard: React.FC = () => {
         );
         setData(null);
       } finally {
-        setLoading(false); 
+        setLoading(false);
       }
     } else {
       setError("Please enter a URL.");
@@ -85,7 +111,7 @@ const Dashboard: React.FC = () => {
   };
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault(); 
+    e.preventDefault();
     fetchData();
   };
 
@@ -203,3 +229,4 @@ const Dashboard: React.FC = () => {
 };
 
 export default Dashboard;
+

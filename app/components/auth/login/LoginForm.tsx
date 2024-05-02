@@ -11,13 +11,13 @@ import eyeClosed from "../../../../public/icons/eye_closed.png";
 export default function LoginForm() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [showPassword, setShowPassword] = useState(false); // State to toggle password visibility
+  const [showPassword, setShowPassword] = useState(false);
   const supabase = createClientComponentClient();
   const router = useRouter();
 
   useEffect(() => {
     const hasLoggedIn = localStorage.getItem("hasLoggedIn");
-    if (hasLoggedIn) {
+    if (hasLoggedIn && router) {
       router.push("/dashboard/dash/v0");
     }
   }, [router]);
@@ -27,8 +27,11 @@ export default function LoginForm() {
       email,
       password,
     });
-
-    if (data?.user) {
+  
+    if (data?.user && router) {
+      console.log("User Data:", data.user); // Log the user data
+      const email = data.user.email ?? ''; // Provide a default value if userEmail is undefined
+      localStorage.setItem("userEmail", email); // Store user's email
       toast.success("Logged in successfully");
       localStorage.setItem("hasLoggedIn", "true");
       router.push("/dashboard/dash/v0");
@@ -36,7 +39,8 @@ export default function LoginForm() {
       toast.error("Email or Password does not match");
     }
   };
-
+  
+  
   return (
     <section>
       <div>

@@ -36,7 +36,7 @@ export default function Navbar() {
   return (
     <section className="pb-4">
       <div>
-        <nav className="backdrop-blur-md h-24 w-full top-0 left-0 right-0 lg:flex lg:justify-between lg:items-center fixed z-50">
+        <nav className="backdrop-blur-md backdrop-brightness-40 h-20 w-full top-0 left-0 right-0 lg:flex lg:justify-between lg:items-center fixed z-50">
           <div className="flex justify-between items-center">
             <Link href="/home">
               <div className="cursor-pointer ">
@@ -91,17 +91,17 @@ export default function Navbar() {
                 isMenuOpen ? "block" : "hidden"
               } lg:flex lg:items-center lg:justify-center lg:gap-10`}
             >
-              <div className="flex gap-10 pr-36 pt-10">
+              <div className="flex gap-10 pr-36 pt-2">
                 <NavItem href="/home">Home</NavItem>
                 <NavItem href="/about">About</NavItem>
                 <NavItem href="/blog">Pricing</NavItem>
                 <NavItem href="/blog">Service</NavItem>
                 <NavItem href="/contact">Contact</NavItem>
-                <div className="absolute right-8 top-9">
+                <div className="absolute right-8 top-4">
                   <div className="flex">
                   <div>
                     <Button
-                      href="/auth//v1/login"
+                      href="/auth/v1/login"
                       title="LOGIN"
                       className="bg-transparent py-3 px-5 text-lg"
                     />
