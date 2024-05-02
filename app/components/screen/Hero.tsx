@@ -66,7 +66,7 @@ export default function Hero() {
             transition={{ duration: 1, delay: 1.1 }}
             className="pt-4"
           >
-            <Button href="/auth/v1/signup" title="Try a demo" />
+            <Button href="/pricing" title="Get started" />
           </motion.div>
           </div>
         </div>

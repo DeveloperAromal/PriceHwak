@@ -1,31 +1,36 @@
-"use client"
-import "@fontsource/dancing-script";
-import { createClientComponentClient } from "@supabase/auth-helpers-nextjs";
-import { useRouter } from "next/navigation";
-import { toast } from "react-toastify";
+"use client";
 import React, { useEffect, useState } from "react";
+import { createClientComponentClient } from "@supabase/auth-helpers-nextjs";
+import { toast } from "react-toastify";
 import axios from "axios";
 import Image from "next/image";
 import Link from "next/link";
 import { ScaleLoader } from "react-spinners";
+import { useRouter } from "next/navigation";
+import { PostgrestSingleResponse } from "@supabase/supabase-js";
 
 const supabase = createClientComponentClient();
 
 const Account = () => {
-  const router = useRouter(); 
+  const router = useRouter();
 
   const handleLogout = async () => {
     await supabase.auth.signOut();
     localStorage.removeItem("hasLoggedIn");
     router.push("/auth/v1/login");
-    toast.success('SignOut succesfully')
+    toast.success("SignOut successfully");
   };
 
   return (
     <div className="w-40 h-14 bg-white rounded-md absolute right-2 z-20">
       <div>
         <button className="flex gap-2 px-4 py-3" onClick={handleLogout}>
-          <Image src="/icons/signout.png" alt="signout" width={30} height={30} />
+          <Image
+            src="/icons/signout.png"
+            alt="signout"
+            width={30}
+            height={30}
+          />
           <h3 className="text-black text-xl">SignOut</h3>
         </button>
       </div>
@@ -34,6 +39,8 @@ const Account = () => {
 };
 
 const Dashboard: React.FC = () => {
+  const router = useRouter(); // Move useRouter here
+
   const [url, setUrl] = useState("");
   const [loading, setLoading] = useState(false);
   const [data, setData] = useState<{
@@ -55,7 +62,10 @@ const Dashboard: React.FC = () => {
   useEffect(() => {
     const subscription = supabase.auth.onAuthStateChange((event, session) => {
       if (event === "SIGNED_IN" && session?.user) {
-        setEmail(session.user?.email || null);
+        const userEmail = session.user.email || null;
+        setEmail(userEmail);
+        // Fetch user's history from the database
+        fetchUserHistory(userEmail);
       } else {
         setEmail(null);
       }
@@ -66,9 +76,34 @@ const Dashboard: React.FC = () => {
     };
   }, []);
 
-  const toggleSignOut = () => {
-    setShowSignOut(!showSignOut);
+  const fetchUserHistory = async (email: string | null) => {
+    if (email) {
+      try {
+        const { data, error }: PostgrestSingleResponse<any[]> = await supabase
+          .from("Pricehawk_Database")
+          .select("*")
+          .eq("email", email);
+
+        if (error) {
+          throw error;
+        }
+
+        if (data) {
+          setAddedProducts(data);
+        }
+      } catch (error) {
+        const errorMessage =
+          error instanceof Error ? error.message : "An error occurred";
+        console.error("Error fetching user history:", errorMessage);
+      }
+    }
   };
+
+ // In Dashboard component
+const handleShowMore = () => {
+  router.push(`/test?addedProducts=${encodeURIComponent(JSON.stringify(addedProducts))}`);
+};
+
 
   const fetchData = async () => {
     if (url) {
@@ -113,6 +148,10 @@ const Dashboard: React.FC = () => {
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     fetchData();
+  };
+
+  const toggleSignOut = () => {
+    setShowSignOut(!showSignOut);
   };
 
   return (
@@ -190,9 +229,8 @@ const Dashboard: React.FC = () => {
           </div>
         )}
         {error && <p className="text-center text-red-700">{error}</p>}
-        <hr className="shad" />
         <div className="flex flex-wrap gap-10 pt-10">
-          {addedProducts.map((data, index) => (
+          {addedProducts.slice(0, 3).map((data, index) => (
             <div key={index} className="flex  py-2">
               <div>
                 {data.image && (
@@ -214,8 +252,7 @@ const Dashboard: React.FC = () => {
                   </p>
                   {data.price && (
                     <p className="text-lg font-bold text-neutral-300">
-                      <span className="text-teal-500">Price:</span>{" "}
-                      {data.price}
+                      <span className="text-teal-500">Price:</span> {data.price}
                     </p>
                   )}
                 </div>
@@ -223,10 +260,19 @@ const Dashboard: React.FC = () => {
             </div>
           ))}
         </div>
+        {addedProducts.length > 3 && (
+          <div className="flex justify-center py-4">
+            <button
+              className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
+              onClick={handleShowMore}
+            >
+              Show More
+            </button>
+          </div>
+        )}
       </div>
     </section>
   );
 };
 
 export default Dashboard;
-

@@ -118,7 +118,7 @@ export default function Navbar() {
             <ul
               className={`${
                 isMenuOpen ? "block" : "hidden"
-              } bg-black w-full h-screen flex items-center justify-center`}
+              } bg-black relative -top-20 w-full h-screen flex items-center justify-center`}
             >
               <div className=" block lg:hidden bg-black z-20">
                 <div className="flex items-center justify-center pb-2">
@@ -132,18 +132,14 @@ export default function Navbar() {
                 </div>
                 <div className="flex gap-2">
                   <div className="pb-4 ">
-                    <Link href="/auth/signup">
-                      <button className="bg-purple-700 py-2 px-8 rounded-xl hover:bg-purple-900">
-                        Sign up
-                      </button>
-                    </Link>
+                  <div>
+                    <Button href="/auth/v1/login" title="Login" />
+                  </div>
                   </div>
                   <div className="pb-4 ">
-                    <Link href="/auth/login">
-                      <button className="bg-purple-700 py-2 px-8 rounded-xl hover:bg-purple-900">
-                        Login
-                      </button>
-                    </Link>
+                  <div>
+                    <Button href="/auth/v1/signup" title="Sign up" />
+                  </div>
                   </div>
                 </div>
               </div>
