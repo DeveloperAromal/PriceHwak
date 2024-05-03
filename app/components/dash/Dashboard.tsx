@@ -150,7 +150,7 @@ const Dashboard: React.FC = () => {
               <div key={index} className="flex py-2">
                 <div>
                   {data.image && (
-                    <div className="flex items-center justify-center">
+                    <div className="flex items-center justify-center pr-14">
                         <Image
                           src={data.image}
                           alt="Product"
