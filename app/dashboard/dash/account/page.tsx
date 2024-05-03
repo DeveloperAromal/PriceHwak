@@ -20,7 +20,7 @@ export default function Button() {
   return (
     <div>
       <div className="flex items-center justify-center h-screen">
-        <button onClick={handleSignOut} className="text-3xl font-bold">SignOut</button>
+        <button onClick={handleSignOut} className="text-3xl font-bold text-red-800 active:text-teal-600">SignOut</button>
       </div>
     </div>
   );
