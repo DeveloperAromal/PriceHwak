@@ -14,7 +14,15 @@ export default function LoginForm() {
   const [showPassword, setShowPassword] = useState(false);
   const supabase = createClientComponentClient();
   const router = useRouter();
-
+  
+  useEffect(() => {
+    const userEmail = localStorage.getItem("userEmail");
+    if (userEmail) {
+      setEmail(userEmail);
+    }
+  }, []);
+  
+  
   useEffect(() => {
     const hasLoggedIn = localStorage.getItem("hasLoggedIn");
     if (hasLoggedIn && router) {
@@ -23,6 +31,11 @@ export default function LoginForm() {
   }, [router]);
 
   const handleLogin = async () => {
+    if (!email.trim() || !password.trim()) {
+      toast.error("Please enter both email and password");
+      return;
+    }
+  
     const { data, error } = await supabase.auth.signInWithPassword({
       email,
       password,
@@ -30,8 +43,8 @@ export default function LoginForm() {
   
     if (data?.user && router) {
       console.log("User Data:", data.user); // Log the user data
-      const email = data.user.email ?? ''; // Provide a default value if userEmail is undefined
-      localStorage.setItem("userEmail", email); // Store user's email
+      const userEmail = data.user.email ?? ''; // Provide a default value if userEmail is undefined
+      localStorage.setItem("userEmail", userEmail); // Store user's email
       toast.success("Logged in successfully");
       localStorage.setItem("hasLoggedIn", "true");
       router.push("/dashboard/dash/v0");
@@ -39,6 +52,7 @@ export default function LoginForm() {
       toast.error("Email or Password does not match");
     }
   };
+  
   
   
   return (

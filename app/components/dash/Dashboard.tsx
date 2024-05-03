@@ -7,7 +7,6 @@ import Image from "next/image";
 import Link from "next/link";
 import { ScaleLoader } from "react-spinners";
 import { useRouter } from "next/navigation";
-import { PostgrestSingleResponse } from "@supabase/supabase-js";
 
 const supabase = createClientComponentClient();
 
@@ -39,7 +38,7 @@ const Account = () => {
 };
 
 const Dashboard: React.FC = () => {
-  const router = useRouter(); // Move useRouter here
+  const router = useRouter();
 
   const [url, setUrl] = useState("");
   const [loading, setLoading] = useState(false);
@@ -64,8 +63,6 @@ const Dashboard: React.FC = () => {
       if (event === "SIGNED_IN" && session?.user) {
         const userEmail = session.user.email || null;
         setEmail(userEmail);
-        // Fetch user's history from the database
-        fetchUserHistory(userEmail);
       } else {
         setEmail(null);
       }
@@ -75,35 +72,6 @@ const Dashboard: React.FC = () => {
       subscription.data.subscription.unsubscribe();
     };
   }, []);
-
-  const fetchUserHistory = async (email: string | null) => {
-    if (email) {
-      try {
-        const { data, error }: PostgrestSingleResponse<any[]> = await supabase
-          .from("Pricehawk_Database")
-          .select("*")
-          .eq("email", email);
-
-        if (error) {
-          throw error;
-        }
-
-        if (data) {
-          setAddedProducts(data);
-        }
-      } catch (error) {
-        const errorMessage =
-          error instanceof Error ? error.message : "An error occurred";
-        console.error("Error fetching user history:", errorMessage);
-      }
-    }
-  };
-
- // In Dashboard component
-const handleShowMore = () => {
-  router.push(`/test?addedProducts=${encodeURIComponent(JSON.stringify(addedProducts))}`);
-};
-
 
   const fetchData = async () => {
     if (url) {
@@ -129,7 +97,7 @@ const handleShowMore = () => {
 
         setData(newData);
         setError(null);
-        setAddedProducts([...addedProducts, newData]);
+        setAddedProducts([newData]);
       } catch (error: any) {
         setError(
           `Error fetching data: ${
@@ -223,14 +191,14 @@ const handleShowMore = () => {
             </div>
           </form>
         </div>
-        {loading && ( // Show loading indicator when loading is true
+        {loading && (
           <div className="flex justify-center py-4">
             <ScaleLoader color="cyan" />
           </div>
         )}
         {error && <p className="text-center text-red-700">{error}</p>}
         <div className="flex flex-wrap gap-10 pt-10">
-          {addedProducts.slice(0, 3).map((data, index) => (
+          {addedProducts.slice(0, 1).map((data, index) => (
             <div key={index} className="flex  py-2">
               <div>
                 {data.image && (
@@ -247,7 +215,16 @@ const handleShowMore = () => {
                   </div>
                 )}
                 <div className="text-black text-center pt-4">
-                  <p className="text-cust text-justify max-w-72 text-neutral-300">
+                  <p
+                    className="text-cust text-justify max-w-64 text-neutral-300"
+                    style={{
+                      overflow: "hidden",
+                      textOverflow: "ellipsis",
+                      display: "-webkit-box",
+                      WebkitLineClamp: 1,
+                      WebkitBoxOrient: "vertical",
+                    }}
+                  >
                     {data.title}
                   </p>
                   {data.price && (
@@ -260,16 +237,6 @@ const handleShowMore = () => {
             </div>
           ))}
         </div>
-        {addedProducts.length > 3 && (
-          <div className="flex justify-center py-4">
-            <button
-              className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
-              onClick={handleShowMore}
-            >
-              Show More
-            </button>
-          </div>
-        )}
       </div>
     </section>
   );
