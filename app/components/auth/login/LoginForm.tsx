@@ -14,7 +14,7 @@ export default function LoginForm() {
   const [showPassword, setShowPassword] = useState(false);
   const supabase = createClientComponentClient();
   const router = useRouter();
-  
+
   useEffect(() => {
     const userEmail = localStorage.getItem("userEmail");
     if (userEmail) {
@@ -42,9 +42,9 @@ export default function LoginForm() {
     });
   
     if (data?.user && router) {
-      console.log("User Data:", data.user); // Log the user data
-      const userEmail = data.user.email ?? ''; // Provide a default value if userEmail is undefined
-      localStorage.setItem("userEmail", userEmail); // Store user's email
+      console.log("User Data:", data.user);
+      const userEmail = data.user.email ?? '';
+      localStorage.setItem("userEmail", userEmail);
       toast.success("Logged in successfully");
       localStorage.setItem("hasLoggedIn", "true");
       router.push("/dashboard/dash/v0");
