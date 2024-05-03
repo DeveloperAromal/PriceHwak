@@ -77,7 +77,7 @@ const Dashboard: React.FC = () => {
     if (url) {
       setLoading(true);
       try {
-        const response = await axios.post("/api/scrape", { url }, { timeout: 30000 });
+        const response = await axios.post("/api/scrape", { url }, { timeout: 50000 });
 
 
         const newData = {

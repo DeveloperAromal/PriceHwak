@@ -22,7 +22,7 @@ export default async function handler(req, res) {
     });
     try {
       const page = await browser.newPage();
-      await page.goto(url, { timeout: 30000 }); // Set a timeout of 30 seconds
+      await page.goto(url, { timeout: 50000 }); // Set a timeout of 30 seconds
       
         console.log('Navigated! Scraping page content...');
         const title = await page.evaluate(() => {
