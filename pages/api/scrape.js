@@ -29,7 +29,7 @@ export default async function handler(req, res) {
 
     try {
       const page = await browser.newPage();
-      await page.goto(url, { timeout: 30000 });
+      await page.goto(url, { timeout: 60000 });
 
       console.log('Navigated! Scraping page content...');
 

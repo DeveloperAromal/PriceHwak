@@ -55,7 +55,7 @@ const Dashboard: React.FC = () => {
         const response = await axios.post(
           "/api/scrape",
           { url },
-          { timeout: 30000 }
+          { timeout: 60000 }
         );
 
         const newData = {
@@ -140,31 +140,29 @@ const Dashboard: React.FC = () => {
             </form>
           </div>
           {loading && (
-            <div className="flex justify-center py-4  pr-10">
+            <div className="flex justify-center py-4 pr-10">
               <ScaleLoader color="cyan" />
             </div>
           )}
-          {error && <p className="text-center text-red-700">{error}</p>}
-          <div className="flex items-center justify-center gap-10 pt-10">
+          {error && <p className="text-center text-red-700 pr-1o">{error}</p>}
+          <div className="flex items-center justify-center gap-10 pt-10 pr-1o">
             {addedProducts.slice(0, 1).map((data, index) => (
-              <div key={index} className="flex  py-2">
+              <div key={index} className="flex py-2">
                 <div>
                   {data.image && (
                     <div className="flex items-center justify-center">
-                      <div className="w-64 h-64">
                         <Image
                           src={data.image}
                           alt="Product"
-                          width={150}
-                          height={150}
-                          className="w-full h-full rounded-md shad"
+                          width={200}
+                          height={200}
+                          className="w-full h-full"
                         />
-                      </div>
                     </div>
                   )}
                   <div className="text-black text-center pt-4">
                     <p
-                      className="text-cust text-justify max-w-64 text-neutral-300"
+                      className="text-cust text-justify max-w-72 text-neutral-300"
                       style={{
                         overflow: "hidden",
                         textOverflow: "ellipsis",
