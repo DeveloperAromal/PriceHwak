@@ -55,7 +55,7 @@ const Dashboard: React.FC = () => {
         const response = await axios.post(
           "/api/scrape",
           { url },
-          { timeout: 50000 }
+          { timeout: 30000 }
         );
 
         const newData = {
@@ -145,7 +145,7 @@ const Dashboard: React.FC = () => {
             </div>
           )}
           {error && <p className="text-center text-red-700">{error}</p>}
-          <div className="flex flex-wrap gap-10 pt-10">
+          <div className="flex items-center justify-center gap-10 pt-10">
             {addedProducts.slice(0, 1).map((data, index) => (
               <div key={index} className="flex  py-2">
                 <div>
