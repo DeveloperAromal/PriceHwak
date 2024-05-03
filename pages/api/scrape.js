@@ -1,4 +1,5 @@
 import puppeteer from 'puppeteer-core';
+import cheerio from 'cheerio';
 
 const SBR_WS_ENDPOINT = 'wss://brd-customer-hl_723f7de9-zone-pricehwak:y9oy41j60wbm@brd.superproxy.io:9222';
 
@@ -16,10 +17,6 @@ export default async function handler(req, res) {
   const titleClass = ['#productTitle', '.VU-ZEz', '.a-size-large', '.product-title-word-break'];
   const imageClass = ['.imgTagWrapper img', '.a-dynamic-image', '.a-stretch-horizontal', '.DByuf4', '.IZexXJ', '.jLEJ7H'];
   const priceClass = ['.a-price-whole', '.Nx9bqj', '.CxhGGd', '.money'];
-  // const about = ['a-section','a-spacing-medium ','a-spacing-top-small'];
-  // const oldPrice = [];
-  // const rating = [];
-  
 
   try {
     console.log('Connecting to Scraping Browser...');
@@ -33,23 +30,44 @@ export default async function handler(req, res) {
 
       console.log('Navigated! Scraping page content...');
 
-      const title = await page.evaluate((titleClass) => {
-        const titleElement = document.querySelector(titleClass.join(', '));
-        return titleElement ? titleElement.innerText.trim() : null;
-      }, titleClass);
+      const html = await page.content();
+      const $ = cheerio.load(html);
 
-      const price = await page.evaluate((priceClass) => {
-        const priceElement = document.querySelector(priceClass.join(', '));
-        return priceElement ? priceElement.innerText.trim() : null;
-      }, priceClass);
+      const getTitle = () => {
+        for (const className of titleClass) {
+          const title = $(className).text().trim();
+          if (title) return title;
+        }
+        return null;
+      };
 
-      const image = await page.evaluate((imageClass) => {
-        const imageElement = document.querySelector(imageClass.join(', '));
-        return imageElement ? imageElement.src : null;
-      }, imageClass);
+      const title = getTitle();
+
+      const getPrices = () => {
+        const prices = [];
+        for (const className of priceClass) {
+          $(className).each((index, element) => {
+            const price = $(element).text().trim();
+            if (price) prices.push(price);
+          });
+        }
+        return prices.length ? prices : null;
+      };
+
+      const prices = getPrices();
+
+      const getImage = () => {
+        for (const className of imageClass) {
+          const src = $(className).attr('src');
+          if (src) return src;
+        }
+        return null;
+      };
+
+      const image = getImage();
 
       await browser.close();
-      res.status(200).json({ title, price, image });
+      res.status(200).json({ title, prices, image });
     } catch (error) {
       console.error('Error scraping page content:', error);
       await browser.close();

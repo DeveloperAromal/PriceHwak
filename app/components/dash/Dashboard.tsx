@@ -145,44 +145,57 @@ const Dashboard: React.FC = () => {
             </div>
           )}
           {error && <p className="text-center text-red-700 pr-1o">{error}</p>}
-          <div className="flex items-center justify-center gap-10 pt-10 pr-1o">
-            {addedProducts.slice(0, 1).map((data, index) => (
-              <div key={index} className="flex py-2">
-                <div>
-                  {data.image && (
-                    <div className="flex items-center justify-center pr-14">
-                        <Image
-                          src={data.image}
-                          alt="Product"
-                          width={200}
-                          height={200}
-                          className="w-full h-full"
-                        />
-                    </div>
-                  )}
-                  <div className="text-black text-center pt-4">
-                    <p
-                      className="text-cust text-justify max-w-72 text-neutral-300"
-                      style={{
-                        overflow: "hidden",
-                        textOverflow: "ellipsis",
-                        display: "-webkit-box",
-                        WebkitLineClamp: 1,
-                        WebkitBoxOrient: "vertical",
-                      }}
-                    >
-                      {data.title}
-                    </p>
-                    {data.price && (
-                      <p className="text-lg font-bold text-neutral-300">
-                        <span className="text-teal-500">Price:</span>{" "}
-                        {data.price}
-                      </p>
-                    )}
-                  </div>
-                </div>
-              </div>
+          <div className="flex items-center justify-center gap-10 pt-10 pr-10">
+          {addedProducts.slice(0, 1).map((data, index) => (
+  <div key={index} className="flex py-2">
+    <div>
+      {data.image && (
+        <div className="flex items-center justify-center pr-14">
+          <div className="w-64 h-64">
+            <Image
+              src={data.image}
+              alt="Product"
+              width={200}
+              height={200}
+              className="w-full h-full"
+            />
+          </div>
+        </div>
+      )}
+      <div className="text-black text-center pt-4">
+        <p
+          className="text-cust text-justify max-w-72 text-neutral-300"
+          style={{
+            overflow: "hidden",
+            textOverflow: "ellipsis",
+            display: "-webkit-box",
+            WebkitLineClamp: 1,
+            WebkitBoxOrient: "vertical",
+          }}
+        >
+          {data.title}
+        </p>
+        {Array.isArray(data.price) ? (
+          <div>
+            <p className="text-lg font-bold text-neutral-300">
+              <span className="text-teal-500">Prices:</span>
+            </p>
+            {data.price.map((price, index) => (
+              <p key={index} className="text-lg font-bold text-neutral-300">
+                {price}
+              </p>
             ))}
+          </div>
+        ) : (
+          <p className="text-lg font-bold text-neutral-300">
+            <span className="text-teal-500">Price:</span> {data.price}
+          </p>
+        )}
+      </div>
+    </div>
+  </div>
+))}
+
           </div>
         </div>
       </div>

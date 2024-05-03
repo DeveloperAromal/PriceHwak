@@ -72,9 +72,9 @@ export default function Navbar() {
             <ul
               className={`${
                 isMenuOpen ? "block" : "hidden"
-              } bg-neutral-900 relative -top-20 w-44 h-screen flex items-center justify-center`}
+              } bg-neutral-900 relative -top-20 w-44 h-full flex items-center justify-center`}
             >
-              <div className=" block lg:hidden bg-neutral-900 z-20 pt-44">
+              <div className=" block lg:hidden bg-neutral-900 z-20 pt-28">
                 <div >
                   <div className="pr-4 pb-2">
                     <div className="flex gap-4">
