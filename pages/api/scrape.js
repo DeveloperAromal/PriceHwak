@@ -15,10 +15,10 @@ export default async function handler(req, res) {
 
   const titleClass = ['#productTitle', '.VU-ZEz', '.a-size-large', '.product-title-word-break'];
   const imageClass = ['.imgTagWrapper img', '.a-dynamic-image', '.a-stretch-horizontal', '.DByuf4', '.IZexXJ', '.jLEJ7H'];
-  const priceClass = ['.a-price-whole', '.Nx9bqj', '.CxhGGd', '.money'];
+  const priceClass = ['.a-price-whole', '.Nx9bqj', '.CxhGGd', '.money', 'a-price', 'aok-align-center', ' reinventPricePriceToPayMargin', 'priceToPay'];
   // const about = ['a-section','a-spacing-medium ','a-spacing-top-small'];
   // const oldPrice = [];
-  // const rating = [];
+  const rating = [''];
   
 
   try {

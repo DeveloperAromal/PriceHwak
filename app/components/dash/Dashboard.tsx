@@ -107,7 +107,7 @@ const Dashboard: React.FC = () => {
       <Hamburger />
       <div className="w-full">
         <div>
-          <div className="pt-20 pr-10">
+          <div className="pt-20">
             <h1 className="text-center font-bold text-4xl md:text-5xl lg:text-6xl pt-10">
               Paste the link
             </h1>
@@ -144,58 +144,50 @@ const Dashboard: React.FC = () => {
               <ScaleLoader color="cyan" />
             </div>
           )}
-          {error && <p className="text-center text-red-700 pr-1o">{error}</p>}
-          <div className="flex items-center justify-center gap-10 pt-10 pr-10">
-          {addedProducts.slice(0, 1).map((data, index) => (
-  <div key={index} className="flex py-2">
-    <div>
-      {data.image && (
-        <div className="flex items-center justify-center pr-14">
-          <div className="w-64 h-64">
-            <Image
-              src={data.image}
-              alt="Product"
-              width={200}
-              height={200}
-              className="w-full h-full"
-            />
-          </div>
-        </div>
-      )}
-      <div className="text-black text-center pt-4">
-        <p
-          className="text-cust text-justify max-w-72 text-neutral-300"
-          style={{
-            overflow: "hidden",
-            textOverflow: "ellipsis",
-            display: "-webkit-box",
-            WebkitLineClamp: 1,
-            WebkitBoxOrient: "vertical",
-          }}
-        >
-          {data.title}
-        </p>
-        {Array.isArray(data.price) ? (
-          <div>
-            <p className="text-lg font-bold text-neutral-300">
-              <span className="text-teal-500">Prices:</span>
-            </p>
-            {data.price.map((price, index) => (
-              <p key={index} className="text-lg font-bold text-neutral-300">
-                {price}
-              </p>
+          {error && <p className="text-center text-red-700">{error}</p>}
+          <div className="pt-10 pl-20 pr-10">
+            {addedProducts.slice(0, 1).map((data, index) => (
+              <div key={index} className="py-2">
+                <div className="border border-gray-300 rounded-lg shadow-md flex">
+                  {data.image && (
+                    <div className="flex-none">
+                      <Image
+                        src={data.image}
+                        alt="Product"
+                        width={400}
+                        height={400}
+                        className="rounded-l-lg"
+                      />
+                    </div>
+                  )}
+                  <div className="flex flex-col justify-center p-6">
+                    <h2 className="text-xl font-semibold text-gray-800">
+                      {data.title}
+                    </h2>
+                    {Array.isArray(data.price) ? (
+                      <div>
+                        <p className="text-lg font-bold text-gray-700 mt-2">
+                          <span className="text-teal-500">Prices:</span>
+                        </p>
+                        {data.price.map((price, index) => (
+                          <p
+                            key={index}
+                            className="text-lg font-bold text-gray-700"
+                          >
+                            {price}
+                          </p>
+                        ))}
+                      </div>
+                    ) : (
+                      <p className="text-lg font-bold text-gray-700">
+                        <span className="text-teal-500">Price:</span>{" "}
+                        {data.price}
+                      </p>
+                    )}
+                  </div>
+                </div>
+              </div>
             ))}
-          </div>
-        ) : (
-          <p className="text-lg font-bold text-neutral-300">
-            <span className="text-teal-500">Price:</span> {data.price}
-          </p>
-        )}
-      </div>
-    </div>
-  </div>
-))}
-
           </div>
         </div>
       </div>
