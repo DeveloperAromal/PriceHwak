@@ -1,6 +1,6 @@
 import puppeteer from 'puppeteer-core';
 
-const SBR_WS_ENDPOINT = 'wss://brd-customer-hl_723f7de9-zone-pricehwak:y9oy41j60wbm@brd.superproxy.io:9222';
+const SBR_WS_ENDPOINT = 'wss://brd-customer-hl_b7d38241-zone-pricehawkhackathon:t4swhde3hx17@brd.superproxy.io:9222';
 
 export default async function handler(req, res) {
   if (req.method !== 'POST') {
@@ -29,7 +29,7 @@ export default async function handler(req, res) {
 
     try {
       const page = await browser.newPage();
-      await page.goto(url, { timeout: 30000 });
+      await page.goto(url, { timeout: 60000 });
 
       console.log('Navigated! Scraping page content...');
 
