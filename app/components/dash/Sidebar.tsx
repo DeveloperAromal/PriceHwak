@@ -16,18 +16,19 @@ export default function Sidebar() {
   return (
     <section>
       <div
-        className="container bg-black w-14 absolute z-50 h-screen lg:block hidden shad hover:w-44"
+        className="container bg-black w-14 absolute z-50 h-screen lg:block hidden border-r border-gray-500 hover:w-44 transition-transform duration-1000"
         onMouseEnter={() => setHovered(true)}
         onMouseLeave={() => setHovered(false)}
       >
+        <div>
         <h1>
           {" "}
-          <div className="">
+          <div className="flex items-center justify-center">
             <Image
               src="/assets/logo.png"
               alt="logo"
-              width={78}
-              height={78}
+              width={55}
+              height={55}
               className="hidden lg:block pt-4"
             />
           </div>
@@ -38,8 +39,8 @@ export default function Sidebar() {
               href="#"
               src="/icons/bell.png"
               alt="#"
-              width={30}
-              height={30}
+              width={25}
+              height={25}
               label="Notification"
               hovered={hovered}
             />
@@ -47,8 +48,8 @@ export default function Sidebar() {
               href="#"
               src="/icons/heart.png"
               alt="#"
-              width={30}
-              height={30}
+              width={25}
+              height={25}
               label="Favourite"
               hovered={hovered}
             />
@@ -56,8 +57,8 @@ export default function Sidebar() {
               href="#"
               src="/icons/whishlist.png"
               alt="#"
-              width={30}
-              height={30}
+              width={25}
+              height={25}
               label="Wishlist"
               hovered={hovered}
             />
@@ -65,8 +66,8 @@ export default function Sidebar() {
               href="#"
               src="/icons/tracking.png"
               alt="#"
-              width={30}
-              height={30}
+              width={25}
+              height={25}
               label="Tracking"
               hovered={hovered}
             />
@@ -74,8 +75,8 @@ export default function Sidebar() {
               href="#"
               src="/icons/trending.png"
               alt="#"
-              width={30}
-              height={30}
+              width={25}
+              height={25}
               label="Trending"
               hovered={hovered}
             />
@@ -120,8 +121,8 @@ export default function Sidebar() {
               href="/dashboard/dash/account"
               src="/icons/account.png"
               alt="#"
-              width={30}
-              height={30}
+              width={25}
+              height={25}
               label="Account"
               hovered={hovered}
             />
@@ -129,12 +130,13 @@ export default function Sidebar() {
               href="#"
               src="/icons/settings.png"
               alt="#"
-              width={30}
-              height={30}
+              width={25}
+              height={25}
               label="Settings"
               hovered={hovered}
             />
           </div>
+        </div>
         </div>
       </div>
     </section>
@@ -151,19 +153,19 @@ function NavicoBlock({
   hovered,
 }: NavicoProps & { label: string; hovered: boolean }) {
   return (
-    <div className="flex gap-2">
-      <Navico href={href} src={src} alt={alt} width={width} height={height} />
-      {hovered && <span>{label}</span>}
+    <div>
+      <Link href={href}>
+        <div className="flex gap-2"><Navico src={src} alt={alt} width={width} height={height} href={""} />
+        {hovered && <span className="hover:text-teal-500">{label}</span>}</div>
+      </Link>
     </div>
   );
 }
 
-function Navico({ src, alt, width, height, href }: NavicoProps) {
+function Navico({ src, alt, width, height }: NavicoProps) {
   return (
     <div className="pb-6">
-      <Link href={href}>
-        <Image src={src} alt={alt} width={width} height={height} />
-      </Link>
+      <Image src={src} alt={alt} width={width} height={height} />
     </div>
   );
 }

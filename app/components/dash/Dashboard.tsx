@@ -53,7 +53,7 @@ const Dashboard: React.FC = () => {
       setLoading(true);
       try {
         const response = await axios.post(
-          "/api/scrape",
+          "https://server-gbcr.onrender.com/api/scrape",
           { url },
           { timeout: 60000 }
         );
