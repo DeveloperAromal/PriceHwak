@@ -118,9 +118,9 @@ const Dashboard: React.FC = () => {
               and see the magic
             </p>
           </div>
-          <div className="flex items-center justify-center py-10 pr-10">
+          <div className="flex items-center justify-center py-10">
             <form className="w-full md:w-auto" onSubmit={handleSubmit}>
-              <div className="flex">
+              <div className="flex px-4">
                 <input
                   type="text"
                   placeholder="Enter a new product url to track...."
@@ -140,15 +140,15 @@ const Dashboard: React.FC = () => {
             </form>
           </div>
           {loading && (
-            <div className="flex justify-center py-4 pr-10">
-              <ScaleLoader color="cyan" />
+            <div className="flex justify-center py-4">
+              <ScaleLoader color="gray" />
             </div>
           )}
           {error && <p className="text-center text-red-700">{error}</p>}
-          <div className="pt-10 pl-20 pr-10">
+          <div className="flex items-center justify-center px-8 sm:px-20">
             {addedProducts.slice(0, 1).map((data, index) => (
-              <div key={index} className="py-2">
-                <div className="border border-gray-300 rounded-lg shadow-md flex">
+              <div key={index} className="py-4">
+                <div className="border border-gray-300 rounded-lg shadow-md flex flex-col md:flex-row">
                   {data.image && (
                     <div className="flex-none">
                       <Image
@@ -156,30 +156,30 @@ const Dashboard: React.FC = () => {
                         alt="Product"
                         width={400}
                         height={400}
-                        className="rounded-l-lg"
+                        className="rounded-lg md:rounded-l-lg md:rounded-r-none"
                       />
                     </div>
                   )}
-                  <div className="flex flex-col justify-center p-6">
-                    <h2 className="text-xl font-semibold text-gray-800">
+                  <div className="flex flex-col justify-center p-4 md:p-6">
+                    <h2 className="text-lg md:text-xl font-semibold text-gray-800 mb-2">
                       {data.title}
                     </h2>
                     {Array.isArray(data.price) ? (
                       <div>
-                        <p className="text-lg font-bold text-gray-700 mt-2">
+                        <p className="text-base md:text-lg font-bold text-gray-700 mt-2">
                           <span className="text-teal-500">Prices:</span>
                         </p>
                         {data.price.map((price, index) => (
                           <p
                             key={index}
-                            className="text-lg font-bold text-gray-700"
+                            className="text-base md:text-lg font-bold text-gray-700"
                           >
                             {price}
                           </p>
                         ))}
                       </div>
                     ) : (
-                      <p className="text-lg font-bold text-gray-700">
+                      <p className="text-base md:text-lg font-bold text-gray-700">
                         <span className="text-teal-500">Price:</span>{" "}
                         {data.price}
                       </p>

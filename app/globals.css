@@ -75,19 +75,10 @@
 
 }
 
-/* Add this to your CSS file */
-.dashboard-content { /* Adjust to match the top padding of your content */
-    overflow-y: auto;
-  }
-  
-  /* Example styles for the sidebar */
   .sidebar {
     position: fixed;
     top: 0;
     left: 0;
-    width: 14rem; /* Adjust based on the desired width */
     height: 100vh;
-    background-color: #000;
-    color: #fff;
   }
   

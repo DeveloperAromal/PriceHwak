@@ -36,9 +36,7 @@ export default function Navbar() {
   }, [isMenuOpen]);
 
   return (
-    <section>
-      <div>
-        <nav className="top-0 left-0 right-0 lg:flex lg:justify-between lg:items-center">
+        <nav className="top-0 left-0 absolute lg:flex lg:justify-between lg:items-center w-10 h-10">
           <div className="flex justify-between items-center">
             <div className="block lg:hidden">
               <div className="pt-4 flex z-60">
@@ -74,7 +72,7 @@ export default function Navbar() {
                 isMenuOpen ? "block" : "hidden"
               } bg-neutral-900 relative -top-20 w-44 h-full flex items-center justify-center`}
             >
-              <div className=" block lg:hidden bg-neutral-900 z-20 pt-28">
+              <div className="block lg:hidden bg-neutral-900 z-20 pt-28">
                 <div >
                   <div className="pr-4 pb-2">
                     <div className="flex gap-4">
@@ -194,8 +192,6 @@ export default function Navbar() {
             </ul>
           </div>
         </nav>
-      </div>
-    </section>
   );
 }
 function Navico({ src, alt, width, height, href }: NavicoProps) {

@@ -14,7 +14,7 @@ export default function Sidebar() {
   const [hovered, setHovered] = useState(false);
 
   return (
-    <section className="">
+    <section className="sidebar">
       <div
         className="container bg-black w-14 absolute z-50 h-screen lg:block hidden border-r border-gray-500 hover:w-44 transition-transform duration-1000"
         onMouseEnter={() => setHovered(true)}
