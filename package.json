@@ -12,6 +12,9 @@
   "dependencies": {
     "@ducanh2912/next-pwa": "latest",
     "@fontsource/dancing-script": "^5.0.18",
+    "@fortawesome/fontawesome-svg-core": "^6.5.2",
+    "@fortawesome/free-solid-svg-icons": "^6.5.2",
+    "@fortawesome/react-fontawesome": "^0.2.0",
     "@supabase/auth-helpers-nextjs": "^0.10.0",
     "@supabase/supabase-js": "^2.42.4",
     "axios": "^1.6.8",

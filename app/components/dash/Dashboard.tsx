@@ -7,8 +7,8 @@ import Image from "next/image";
 import "@fontsource/dancing-script";
 import { ScaleLoader } from "react-spinners";
 import { useRouter } from "next/navigation";
-import SidebarComponent from "./Sidebar";
-import Hamburger from "./Ham";
+import SidebarComponent from "./dash_components/Sidebar";
+import Hamburger from "./dash_components/Ham";
 
 const supabase = createClientComponentClient();
 
@@ -53,7 +53,7 @@ const Dashboard: React.FC = () => {
       setLoading(true);
       try {
         const response = await axios.post(
-          "https://server-gbcr.onrender.com/api/scrape",
+          "http://localhost:8000/api/scrape",
           { url },
           { timeout: 60000 }
         );

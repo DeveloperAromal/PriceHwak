@@ -1,5 +1,5 @@
 import React from 'react'
-import HistoryPage from '../../../components/dash/History' 
+import HistoryPage from '../../../components/dash/dash_pages/History' 
 
 const page = () => {
   return (
