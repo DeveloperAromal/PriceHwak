@@ -22,12 +22,12 @@ export default function Settings(){
                 <section className="middle">
                     <div className='top pt-4 pb-3'>
                         <Tabs variant='enclosed'>
-                            <TabList className="space-x-10 text-2xl">
-                                <Tab className=''>Account</Tab>
-                                <Tab>Billings</Tab>
-                                <Tab>Plan</Tab>
-                                <Tab>Frequency</Tab>
-                                <Tab>Feedback</Tab>
+                            <TabList className="space-x-10 text-2xl ">
+                                <Tab className='hover:underline'>Account</Tab>
+                                <Tab className='hover:underline'>Billings</Tab>
+                                <Tab className='hover:underline'>Plan</Tab>
+                                <Tab className='hover:underline'>Frequency</Tab>
+                                <Tab className='hover:underline'>Feedback</Tab>
                             </TabList>
                             <TabPanels>
                                  <TabPanel>
@@ -44,12 +44,16 @@ export default function Settings(){
                                         <p className='pr-4 pb-2'>update your account and billing deatails</p>
                                         <Button href="#" title="Add another card" className=''/>
                                     </div>
-                                    <div className='  flex-wrap pl-40 pt-10 space-x-6'>
-                                    <input placeholder='Name on your card ' className='pl-5 mb-5 p-2 ml-20 '/>
-                                    <input placeholder='Expiry' className='pl-10 p-2'/>
-                                    <input placeholder='Card number' className='pl-5 p-2 mt-3 ml-40'/>
-                                    <input placeholder='CVV' className='pl-5 p-2'/>
+                                  <div className='pt-10'>
+                                    < div className='flex gap-10 mb-4 pl-2'>
+                                        <input placeholder='Email ' className=' pr-10 p-2 text-gray-800'/>
+                                        <input placeholder='Expiry' className='pr-10 p-2 text-gray-800'/>
                                     </div>
+                                    <div className='flex gap-10 mb-4 m-3'>
+                                        <input placeholder='Card Number' className='pr-10 p-2 text-gray-800'/>
+                                        <input placeholder='CVV' className='pr-10  p-2 text-gray-800'/>
+                                    </div>
+                                  </div>
                                 </div>
                                 <div className='bottom pt-4 '>
                                     <h3 className='text-2xl'>Billing History</h3>
@@ -73,6 +77,7 @@ export default function Settings(){
         </section>
     );
 }
+
 
 
 
