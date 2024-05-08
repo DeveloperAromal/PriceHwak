@@ -4,7 +4,6 @@ import { Tabs, TabList, TabPanels, Tab, TabPanel } from '@chakra-ui/react'
 import Ham from "../dash_components/Ham";
 import Sidebar from "../dash_components/Sidebar";
 import Button from "../../includes/Button";
-import { Input } from '@chakra-ui/react'
 
 
 
@@ -16,7 +15,7 @@ export default function Settings(){
                <Sidebar/>
             </div>
             <div className='right  pl-60 pb-2'>
-                <div className='top border-b-2'>
+                <div className='top border-b-2 pb-3'>
                     <h1 className='text-4xl pt-4'>Settings</h1>
                     <p className='pt-3'>Manage your account settings and preference here </p>
                 </div>
@@ -35,25 +34,25 @@ export default function Settings(){
                                      <p>Account</p>
                                 </TabPanel>
                                 <TabPanel className='pt-2'>
-                                <div className='pt-2 pb-2 border-b-1'>
+                                <div className='pt-2 pb-4 border-b-1'>
                                     <h2 className='text-2xl pt-2'>Payment Methods</h2>
-                                    <p className='border-b-2'>update yor account and billing deatails</p>
+                                    <p className='border-b-2 pb-4'>update yor account and billing deatails</p>
                                 </div>
-                                <div className='container flex flex-wrap'>
-                                    <div className='left  '>
-                                        <h3 className="text-2xl">Card details</h3>
-                                        <p>update yor account and billing deatails</p>
-                                        <Button href="#" title="Add another card"/>
+                                <div className='container flex border-b-2 pb-3'>
+                                    <div className='left pt-10 pr-10 '>
+                                        <h3 className="text-4xl pb-3">Card details</h3>
+                                        <p className='pr-4 pb-2'>update your account and billing deatails</p>
+                                        <Button href="#" title="Add another card" className=''/>
                                     </div>
-                                    <div className='right'>
-                                    <Input placeholder='Name on your card' />
-                                    <Input placeholder='Expiry' />
-                                    <Input placeholder='Card number' />
-                                    <Input placeholder='CVV' />
+                                    <div className='  flex-wrap pl-40 pt-10 space-x-6'>
+                                    <input placeholder='Name on your card ' className='pl-5 mb-5 p-2 ml-20 '/>
+                                    <input placeholder='Expiry' className='pl-10 p-2'/>
+                                    <input placeholder='Card number' className='pl-5 p-2 mt-3 ml-40'/>
+                                    <input placeholder='CVV' className='pl-5 p-2'/>
                                     </div>
                                 </div>
-                                <div className='bottom'>
-                                    <h3>Billing History</h3>
+                                <div className='bottom pt-4 '>
+                                    <h3 className='text-2xl'>Billing History</h3>
                                     <p>see your billing history here</p>
                                 </div>
                                 </TabPanel>
@@ -74,4 +73,6 @@ export default function Settings(){
         </section>
     );
 }
+
+
 
