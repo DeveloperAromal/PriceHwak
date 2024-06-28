@@ -15,33 +15,7 @@ function ContactForm() {
     setLoading(true);
     setSuccessMessage('');
 
-    try {
-      // Send form data to API route
-      await fetch('/api/contact', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(formValues),
-      }).then((response) => {
-        if (!response.ok) {
-          throw new Error(`HTTP error! Status: ${response.status}`);
-        }
-        return response.json();
-      });
-
-      setLoading(false);
-      setSuccessMessage('Thank you for contacting us!');
-
-      // Reset the form values after successful submission
-      form.reset();
-    } catch (err) {
-      console.error(err);
-      alert('An error occurred while sending your message...');
-      setLoading(false);
-    }
-  };
-
+ 
   return (
     <form onSubmit={onSubmit}>
       <label>
